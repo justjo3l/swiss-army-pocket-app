@@ -2,6 +2,9 @@
 
 import 'package:flutter/material.dart';
 
+import './home_app_bar.dart';
+import './main_navigation_row.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -13,23 +16,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        iconTheme: Theme.of(context).primaryIconTheme,
-        titleTextStyle: Theme.of(context).primaryTextTheme.headline6,
-        actionsIconTheme: Theme.of(context).primaryIconTheme,
-        leading: Icon(Icons.fireplace),
-        title: const Text(
-          'Swiss Army Pocket App',
+        appBar: HomeAppBar(
+          titleText: 'Swiss Army Pocket App',
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.navigation),
-            onPressed: null,
-          ),
-        ],
-      ),
-    );
+        body: MainNavigationRow(),
+        backgroundColor: Theme.of(context).canvasColor);
   }
 }
 
@@ -51,21 +42,43 @@ class MainApp extends StatelessWidget {
     900: Color.fromRGBO(169, 20, 20, 1),
   };
 
+  final secondaryThemeColorHex = 0xFFE0D3D3;
+
+  final Map<int, Color> secondaryThemeColor = {
+    50: Color.fromRGBO(224, 211, 211, .1),
+    100: Color.fromRGBO(224, 211, 211, .2),
+    200: Color.fromRGBO(224, 211, 211, .3),
+    300: Color.fromRGBO(224, 211, 211, .4),
+    400: Color.fromRGBO(224, 211, 211, .5),
+    500: Color.fromRGBO(224, 211, 211, .6),
+    600: Color.fromRGBO(224, 211, 211, .7),
+    700: Color.fromRGBO(224, 211, 211, .8),
+    800: Color.fromRGBO(224, 211, 211, .9),
+    900: Color.fromRGBO(224, 211, 211, 1),
+  };
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Swiss Army Pocket App',
       home: HomeScreen(),
       theme: ThemeData(
-          brightness: Brightness.light,
-          primarySwatch: MaterialColor(mainThemeColorHex, mainThemeColor),
-          primaryIconTheme: IconThemeData(
+        brightness: Brightness.light,
+        primarySwatch: MaterialColor(mainThemeColorHex, mainThemeColor),
+        canvasColor: MaterialColor(secondaryThemeColorHex, secondaryThemeColor),
+        primaryIconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+        primaryTextTheme: TextTheme(
+          headline6: TextStyle(
             color: Colors.white,
           ),
-          primaryTextTheme: TextTheme(
-              headline6: TextStyle(
-            color: Colors.white,
-          ))),
+        ),
+        buttonTheme: ButtonThemeData(
+          shape: RoundedRectangleBorder(),
+          buttonColor: MaterialColor(mainThemeColorHex, mainThemeColor),
+        ),
+      ),
     );
   }
 }
