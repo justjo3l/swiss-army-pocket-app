@@ -3,10 +3,12 @@
 import 'package:flutter/material.dart';
 
 import '../home_app_bar.dart';
-import '../note_container.dart';
+import '../note_tile.dart';
 import '../animations/fade_animation.dart';
 
 import '../main.dart';
+
+import '../data/notes_list_data.dart';
 
 class NotesScreen extends StatefulWidget {
   const NotesScreen({Key? key}) : super(key: key);
@@ -16,43 +18,20 @@ class NotesScreen extends StatefulWidget {
 }
 
 class _NotesScreenState extends State<NotesScreen> {
-  List notesList = [
-    {
-      'noteName': 'Note 1',
-      'noteData': 'First Random Note',
-      'noteIndex': 0,
-      'noteColor': Colors.blue,
-    },
-    {
-      'noteName': 'Note 2',
-      'noteData': 'Second Random Note',
-      'noteIndex': 1,
-      'noteColor': Colors.green,
-    },
-    {
-      'noteName': 'Note 3',
-      'noteData': 'Third Random Note',
-      'noteIndex': 2,
-      'noteColor': Colors.red,
-    },
-    {
-      'noteName': 'Note 4',
-      'noteData': 'Fourth Random Note',
-      'noteIndex': 3,
-      'noteColor': Colors.purple,
-    },
-  ];
+  List notesList = NotesListData().notesList;
 
-  List<NoteContainer> _notesContainerList(int count) => List.generate(
-        count,
-        (i) => NoteContainer(
-          noteName: notesList[i]['noteName'],
-          noteData: notesList[i]['noteData'],
-          noteIndex: notesList[i]['noteIndex'],
-          noteColor: notesList[i]['noteIndex'],
-          numOfNotes: notesList.length,
-        ),
-      );
+  List<NoteTile> _noteTileList(int count) {
+    return List.generate(
+      count,
+      (i) => NoteTile(
+        noteName: notesList[i]['noteName'],
+        noteData: notesList[i]['noteData'],
+        noteIndex: notesList[i]['noteIndex'],
+        noteColor: notesList[i]['noteColor'],
+        numOfNotes: notesList.length,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +46,7 @@ class _NotesScreenState extends State<NotesScreen> {
           child: ConstrainedBox(
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children: [..._notesContainerList(notesList.length)],
+              children: [..._noteTileList(notesList.length)],
             ),
             constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.40),
           ),

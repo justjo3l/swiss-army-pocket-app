@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import './main.dart';
 import 'pages/note.dart';
 
-class NoteContainer extends StatelessWidget {
+class NoteTile extends StatelessWidget {
   final String noteName;
   final String noteData;
   final int noteIndex;
@@ -26,7 +26,7 @@ class NoteContainer extends StatelessWidget {
     );
   }
 
-  NoteContainer({
+  NoteTile({
     required this.noteName,
     required this.noteData,
     required this.noteIndex,
