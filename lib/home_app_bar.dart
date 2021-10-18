@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import './fade_animation.dart';
+import 'animations/fade_animation.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final titleText;

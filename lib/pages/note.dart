@@ -5,23 +5,42 @@ import 'package:flutter/material.dart';
 class NotePageScreen extends StatefulWidget {
   final String noteName;
   final String noteData;
+  final int noteIndex;
+  final Color noteColor;
+  final int numOfNotes;
 
-  const NotePageScreen({Key? key, required String this.noteName, required String this.noteData}) : super(key: key);
+  const NotePageScreen({
+    Key? key,
+    required String this.noteName,
+    required String this.noteData,
+    required int this.noteIndex,
+    required Color this.noteColor,
+    required int this.numOfNotes,
+  }) : super(key: key);
 
   @override
   _NotePageScreenState createState() => _NotePageScreenState(
         noteName: noteName,
         noteData: noteData,
+        noteIndex: noteIndex,
+        noteColor: noteColor,
+        numOfNotes: numOfNotes,
       );
 }
 
 class _NotePageScreenState extends State<NotePageScreen> {
   String noteName;
   String noteData;
+  int noteIndex;
+  Color noteColor;
+  int numOfNotes;
 
   _NotePageScreenState({
     required this.noteName,
     required this.noteData,
+    required this.noteIndex,
+    required this.noteColor,
+    required this.numOfNotes,
   });
 
   @override

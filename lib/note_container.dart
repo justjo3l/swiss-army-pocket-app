@@ -3,11 +3,14 @@
 import 'package:flutter/material.dart';
 
 import './main.dart';
-import './note_page.dart';
+import 'pages/note.dart';
 
 class NoteContainer extends StatelessWidget {
   final String noteName;
   final String noteData;
+  final int noteIndex;
+  final Color noteColor;
+  final int numOfNotes;
 
   void noteClick(BuildContext context) {
     Navigator.of(context).push(
@@ -15,6 +18,9 @@ class NoteContainer extends StatelessWidget {
         builder: (context) => NotePageScreen(
           noteName: noteName,
           noteData: noteData,
+          noteIndex: noteIndex,
+          noteColor: noteColor,
+          numOfNotes: numOfNotes,
         ),
       ),
     );
@@ -23,6 +29,9 @@ class NoteContainer extends StatelessWidget {
   NoteContainer({
     required this.noteName,
     required this.noteData,
+    required this.noteIndex,
+    required this.noteColor,
+    required this.numOfNotes,
   });
 
   @override
@@ -54,16 +63,17 @@ class NoteContainer extends StatelessWidget {
           color: Colors.white,
           margin: EdgeInsets.only(
             top: 20.0,
-            left: 5.0,
-            right: 5.0,
+            left: noteIndex == 0 ? 40.0 : 10.0,
+            right: noteIndex == numOfNotes - 1 ? 40.0 : 10.0,
           ),
           padding: EdgeInsets.all(5.0),
+          width: MediaQuery.of(context).size.width * 0.80,
         ),
         onTap: () {
           noteClick(context);
         },
       ),
-      tag: '$noteName',
+      tag: noteName,
     );
   }
 }
