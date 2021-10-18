@@ -6,19 +6,23 @@ import './fade_animation.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final titleText;
+  final Icon titleIcon;
 
-  HomeAppBar({this.titleText});
+  HomeAppBar({
+    required this.titleText,
+    required this.titleIcon,
+  });
 
   @override
   Widget build(BuildContext context) {
     return FadeAnimation(
-      delay: 1,
+      delay: 0.5,
       child: AppBar(
         centerTitle: true,
         iconTheme: Theme.of(context).primaryIconTheme,
         titleTextStyle: Theme.of(context).primaryTextTheme.headline6,
         actionsIconTheme: Theme.of(context).primaryIconTheme,
-        leading: Icon(Icons.fireplace),
+        leading: titleIcon,
         title: Text(
           titleText,
         ),

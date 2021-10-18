@@ -1,9 +1,11 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
 import 'package:flutter/material.dart';
 
 import './home_app_bar.dart';
 import './main_navigation_row.dart';
+
+import './notes.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -18,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         appBar: HomeAppBar(
           titleText: 'Swiss Army Pocket App',
+          titleIcon: Icon(Icons.fireplace),
         ),
         body: MainNavigationRow(),
         backgroundColor: Theme.of(context).canvasColor);
