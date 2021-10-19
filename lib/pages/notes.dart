@@ -1,10 +1,13 @@
 // ignore_for_file: unused_import, prefer_final_fields, unused_field, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:swiss_army_pocket_app/data/custom_scroll_physics.dart';
 
 import '../home_app_bar.dart';
 import '../note_tile.dart';
 import '../animations/fade_animation.dart';
+
+//import '../data/custom_scroll_physics.dart';
 
 import '../main.dart';
 
@@ -45,6 +48,7 @@ class _NotesScreenState extends State<NotesScreen> {
         child: Center(
           child: ConstrainedBox(
             child: ListView(
+              //physics: NotesCustomScrollPhysics(context: context),
               scrollDirection: Axis.horizontal,
               children: [..._noteTileList(notesList.length)],
             ),

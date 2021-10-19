@@ -26,5 +26,29 @@ class NotesListData {
       'noteIndex': 3,
       'noteColor': Colors.purple,
     },
+    {
+      'noteName': 'Note 5',
+      'noteData': 'Fifth Random Note',
+      'noteIndex': 4,
+      'noteColor': Colors.black,
+    },
+    {
+      'noteName': 'Note 6',
+      'noteData': 'Sixth Random Note',
+      'noteIndex': 5,
+      'noteColor': Colors.white,
+    },
+    {
+      'noteName': 'Note 7',
+      'noteData': 'Seventh Random Note',
+      'noteIndex': 6,
+      'noteColor': Colors.yellow,
+    },
+    {
+      'noteName': 'Note 8',
+      'noteData': 'Eighth Random Note',
+      'noteIndex': 7,
+      'noteColor': Colors.pink,
+    },
   ];
 }
