@@ -16,7 +16,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return FadeAnimation(
-      delay: 0.5,
+      delay: 0,
       child: AppBar(
         centerTitle: true,
         iconTheme: Theme.of(context).primaryIconTheme,

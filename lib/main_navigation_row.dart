@@ -29,7 +29,7 @@ class MainNavigationRow extends StatelessWidget {
         children: [
           //NOTES BUTTON
           FadeAnimation(
-            delay: 2,
+            delay: 1.5,
             child: ElevatedButton(
               onPressed: () {
                 _notesFunction(context);
@@ -57,7 +57,7 @@ class MainNavigationRow extends StatelessWidget {
           ),
           //CENTER BUTTON
           FadeAnimation(
-            delay: 2,
+            delay: 1.5,
             child: ElevatedButton(
               onPressed: _centerFunction,
               child: Icon(
@@ -74,7 +74,7 @@ class MainNavigationRow extends StatelessWidget {
           ),
           //CALCULATE BUTTON
           FadeAnimation(
-            delay: 2,
+            delay: 1.5,
             child: ElevatedButton(
               onPressed: _calculateFunction,
               child: Icon(

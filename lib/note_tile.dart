@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 import './main.dart';
-import 'pages/note.dart';
+import 'pages/note_page.dart';
 
 class NoteTile extends StatelessWidget {
   final String noteName;
