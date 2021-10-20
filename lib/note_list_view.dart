@@ -23,10 +23,7 @@ class NotesListViewState extends State<NotesListView> {
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) {
           return NoteTile(
-            noteName: notesList[index]['noteName'],
-            noteData: notesList[index]['noteData'],
-            noteIndex: notesList[index]['noteIndex'],
-            noteColor: notesList[index]['noteColor'],
+            note: notesList[index],
             numOfNotes: notesList.length,
           );
         });

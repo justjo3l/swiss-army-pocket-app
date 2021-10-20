@@ -1,54 +1,64 @@
 import 'package:flutter/material.dart';
 
+import './note.dart';
+
 class NotesListData {
   List notesList = [
-    {
-      'noteName': 'Note 1',
-      'noteData': 'First Random Note',
-      'noteIndex': 0,
-      'noteColor': Colors.blue,
-    },
-    {
-      'noteName': 'Note 2',
-      'noteData': 'Second Random Note',
-      'noteIndex': 1,
-      'noteColor': Colors.green,
-    },
-    {
-      'noteName': 'Note 3',
-      'noteData': 'Third Random Note',
-      'noteIndex': 2,
-      'noteColor': Colors.red,
-    },
-    {
-      'noteName': 'Note 4',
-      'noteData': 'Fourth Random Note',
-      'noteIndex': 3,
-      'noteColor': Colors.purple,
-    },
-    {
-      'noteName': 'Note 5',
-      'noteData': 'Fifth Random Note',
-      'noteIndex': 4,
-      'noteColor': Colors.black,
-    },
-    {
-      'noteName': 'Note 6',
-      'noteData': 'Sixth Random Note',
-      'noteIndex': 5,
-      'noteColor': Colors.white,
-    },
-    {
-      'noteName': 'Note 7',
-      'noteData': 'Seventh Random Note',
-      'noteIndex': 6,
-      'noteColor': Colors.yellow,
-    },
-    {
-      'noteName': 'Note 8',
-      'noteData': 'Eighth Random Note',
-      'noteIndex': 7,
-      'noteColor': Colors.pink,
-    },
+    Note(
+      noteIndex: 0,
+      noteTitle: 'Note 1',
+      noteDescription: 'First Random Note',
+      noteColor: Colors.blue,
+      createdTime: DateTime.now(),
+    ),
+    Note(
+      noteIndex: 1,
+      noteTitle: 'Note 2',
+      noteDescription: 'Second Random Note',
+      noteColor: Colors.green,
+      createdTime: DateTime.now(),
+    ),
+    Note(
+      noteIndex: 2,
+      noteTitle: 'Note 3',
+      noteDescription: 'Third Random Note',
+      noteColor: Colors.red,
+      createdTime: DateTime.now(),
+    ),
+    Note(
+      noteIndex: 3,
+      noteTitle: 'Note 4',
+      noteDescription: 'Fourth Random Note',
+      noteColor: Colors.purple,
+      createdTime: DateTime.now(),
+    ),
+    Note(
+      noteIndex: 4,
+      noteTitle: 'Note 5',
+      noteDescription: 'Fifth Random Note',
+      noteColor: Colors.black,
+      createdTime: DateTime.now(),
+    ),
+    Note(
+      noteIndex: 5,
+      noteTitle: 'Note 6',
+      noteDescription: 'Sixth Random Note',
+      noteColor: Colors.white,
+      createdTime: DateTime.now(),
+    ),
+    Note(
+      noteIndex: 6,
+      noteTitle: 'Note 7',
+      noteDescription: 'Seventh Random Note',
+      noteColor: Colors.yellow,
+      createdTime: DateTime.now(),
+    ),
+    Note(
+      noteIndex: 7,
+      noteTitle: 'Note 8',
+      noteDescription: 'Eighth Random Note',
+      noteColor: Colors.pink,
+      createdTime: DateTime.now(),
+    ),
   ];
 }

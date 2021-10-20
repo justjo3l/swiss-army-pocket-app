@@ -2,44 +2,31 @@
 
 import 'package:flutter/material.dart';
 
+import '../data/note.dart';
+
 class NotePageScreen extends StatefulWidget {
-  final String noteName;
-  final String noteData;
-  final int noteIndex;
-  final Color noteColor;
+  final Note note;
   final int numOfNotes;
 
   const NotePageScreen({
     Key? key,
-    required String this.noteName,
-    required String this.noteData,
-    required int this.noteIndex,
-    required Color this.noteColor,
+    required Note this.note,
     required int this.numOfNotes,
   }) : super(key: key);
 
   @override
   _NotePageScreenState createState() => _NotePageScreenState(
-        noteName: noteName,
-        noteData: noteData,
-        noteIndex: noteIndex,
-        noteColor: noteColor,
+        note: note,
         numOfNotes: numOfNotes,
       );
 }
 
 class _NotePageScreenState extends State<NotePageScreen> {
-  String noteName;
-  String noteData;
-  int noteIndex;
-  Color noteColor;
+  Note note;
   int numOfNotes;
 
   _NotePageScreenState({
-    required this.noteName,
-    required this.noteData,
-    required this.noteIndex,
-    required this.noteColor,
+    required this.note,
     required this.numOfNotes,
   });
 
@@ -48,15 +35,15 @@ class _NotePageScreenState extends State<NotePageScreen> {
     return Hero(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(noteName),
+          title: Text(note.noteTitle),
           centerTitle: true,
         ),
         body: Container(
-          child: Text(noteData),
+          child: Text(note.noteDescription),
           margin: EdgeInsets.all(10.0),
         ),
       ),
-      tag: noteName,
+      tag: note.noteTitle,
     );
   }
 }

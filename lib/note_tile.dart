@@ -5,21 +5,17 @@ import 'package:flutter/material.dart';
 import './main.dart';
 import 'pages/note_page.dart';
 
+import './data/note.dart';
+
 class NoteTile extends StatelessWidget {
-  final String noteName;
-  final String noteData;
-  final int noteIndex;
-  final Color noteColor;
+  final Note note;
   final int numOfNotes;
 
   void noteClick(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => NotePageScreen(
-          noteName: noteName,
-          noteData: noteData,
-          noteIndex: noteIndex,
-          noteColor: noteColor,
+          note: note,
           numOfNotes: numOfNotes,
         ),
       ),
@@ -27,10 +23,7 @@ class NoteTile extends StatelessWidget {
   }
 
   NoteTile({
-    required this.noteName,
-    required this.noteData,
-    required this.noteIndex,
-    required this.noteColor,
+    required this.note,
     required this.numOfNotes,
   });
 
@@ -42,7 +35,7 @@ class NoteTile extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                noteName,
+                note.noteTitle,
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -52,7 +45,7 @@ class NoteTile extends StatelessWidget {
                 height: 10.0,
               ),
               Text(
-                noteData,
+                note.noteDescription,
                 style: TextStyle(
                   fontSize: 12,
                 ),
@@ -63,8 +56,8 @@ class NoteTile extends StatelessWidget {
           color: Colors.white,
           margin: EdgeInsets.only(
             top: 20.0,
-            left: noteIndex == 0 ? 40.0 : 10.0,
-            right: noteIndex == numOfNotes - 1 ? 40.0 : 10.0,
+            left: note.noteIndex == 0 ? 40.0 : 10.0,
+            right: note.noteIndex == numOfNotes - 1 ? 40.0 : 10.0,
           ),
           padding: EdgeInsets.all(5.0),
           width: MediaQuery.of(context).size.width * 0.80,
@@ -73,7 +66,7 @@ class NoteTile extends StatelessWidget {
           noteClick(context);
         },
       ),
-      tag: noteName,
+      tag: note.noteTitle,
     );
   }
 }
