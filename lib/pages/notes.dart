@@ -8,6 +8,9 @@ import '../animations/fade_animation.dart';
 
 import '../main.dart';
 
+import '../data/note_list_data.dart';
+import '../data/note.dart';
+
 class NotesScreen extends StatefulWidget {
   const NotesScreen({Key? key}) : super(key: key);
 
@@ -16,6 +19,8 @@ class NotesScreen extends StatefulWidget {
 }
 
 class _NotesScreenState extends State<NotesScreen> {
+  bool notesListFlag = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +32,16 @@ class _NotesScreenState extends State<NotesScreen> {
         delay: 2,
         child: Center(
           child: ConstrainedBox(
-            child: NotesListView(),
+            child: (NotesListData().notesList.length != 0 || notesListFlag)
+                ? NotesListView()
+                : ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        NotesListData().createNote();
+                        print(NotesListData().notesList);
+                      });
+                    },
+                    child: Text('Create Note')),
             constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.40),
           ),
         ),
