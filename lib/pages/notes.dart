@@ -17,6 +17,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../data/boxes.dart';
 
+import './../note_form.dart';
+
 class NotesScreen extends StatefulWidget {
   const NotesScreen({Key? key}) : super(key: key);
 
@@ -47,6 +49,19 @@ class _NotesScreenState extends State<NotesScreen> {
     box.add(note);
   }
 
+  Future deleteNote(int index) async {
+    final box = Boxes.getNotes();
+    box.delete(index);
+  }
+
+  Future showNoteDialog() async {
+    print('This ran!');
+    return AlertDialog(
+      title: Text('Create a new Note'),
+      content: NoteForm(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,22 +71,42 @@ class _NotesScreenState extends State<NotesScreen> {
       ),
       body: FadeAnimation(
         delay: 2,
-        child: Center(
-          child: ValueListenableBuilder(
-              valueListenable: Boxes.getNotes().listenable(),
-              builder: (context, Box box, _) {
-                final notesList = box.values.toList().cast<Note>();
-                return ConstrainedBox(
-                  child: (notesList.isNotEmpty || notesListFlag)
-                      ? NotesListView()
-                      : ElevatedButton(
-                          onPressed: () {
-                            addNote(0, 'First Note', 'First Random Description', Colors.blue.toString());
-                          },
-                          child: Text('Create Note')),
-                  constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.40),
-                );
-              }),
+        child: Stack(
+          children: [
+            Center(
+              child: ValueListenableBuilder(
+                  valueListenable: Boxes.getNotes().listenable(),
+                  builder: (context, Box box, _) {
+                    final notesList = box.values.toList().cast<Note>();
+                    return ConstrainedBox(
+                      child: (notesList.isNotEmpty || notesListFlag) ? NotesListView() : Text('No Notes yet :('),
+                      constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.40),
+                    );
+                  }),
+            ),
+            Align(
+              child: Container(
+                child: Ink(
+                  child: IconButton(
+                    onPressed: () => showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: Text('Create a new Note'),
+                        content: NoteForm(),
+                      ),
+                    ),
+                    icon: Icon(
+                      Icons.add,
+                      color: Colors.white,
+                    ),
+                  ),
+                  decoration: ShapeDecoration(shape: CircleBorder(), color: Theme.of(context).primaryColor),
+                ),
+                padding: EdgeInsets.all(10),
+              ),
+              alignment: Alignment.bottomRight,
+            ),
+          ],
         ),
         direction: 'down',
       ),
