@@ -79,26 +79,30 @@ class _NotesScreenState extends State<NotesScreen> {
               ),
               Align(
                 child: Container(
-                  child: Ink(
-                    child: IconButton(
-                      onPressed: () => showDialog<String>(
-                        context: context,
-                        builder: (BuildContext context) => AlertDialog(
-                          title: Text(
-                            'Create a new Note',
-                            textAlign: TextAlign.center,
-                          ),
-                          content: NoteForm(),
+                  child: RawMaterialButton(
+                    onPressed: () => showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: Text(
+                          'Create a new Note',
+                          textAlign: TextAlign.center,
                         ),
-                      ),
-                      icon: Icon(
-                        Icons.add,
-                        color: Colors.white,
+                        content: NoteForm(),
                       ),
                     ),
-                    decoration: ShapeDecoration(shape: CircleBorder(), color: Theme.of(context).primaryColor),
+                    child: Icon(
+                      Icons.add,
+                      color: Colors.white,
+                      size: 40.0,
+                    ),
+                    fillColor: Theme.of(context).primaryColor,
+                    shape: CircleBorder(),
+                    padding: EdgeInsets.all(10.0),
                   ),
-                  padding: EdgeInsets.all(10),
+                  padding: EdgeInsets.only(
+                    bottom: 20,
+                    left: 20,
+                  ),
                 ),
                 alignment: Alignment.bottomRight,
               ),
