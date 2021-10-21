@@ -56,56 +56,63 @@ class _NotesScreenState extends State<NotesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: HomeAppBar(
-        titleText: 'Notes',
-        titleIcon: Icon(Icons.notes_rounded),
-      ),
-      body: FadeAnimation(
-        delay: 2,
-        child: Stack(
-          children: [
-            Center(
-              child: ValueListenableBuilder(
-                  valueListenable: Boxes.getNotes().listenable(),
-                  builder: (context, Box box, _) {
-                    final notesList = box.values.toList().cast<Note>();
-                    return ConstrainedBox(
-                      child: (notesList.isNotEmpty || notesListFlag) ? NotesListView() : Text('No Notes yet :('),
-                      constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.40),
-                    );
-                  }),
-            ),
-            Align(
-              child: Container(
-                child: Ink(
-                  child: IconButton(
-                    onPressed: () => showDialog<String>(
-                      context: context,
-                      builder: (BuildContext context) => AlertDialog(
-                        title: Text(
-                          'Create a new Note',
-                          textAlign: TextAlign.center,
+    return GestureDetector(
+      child: Scaffold(
+        appBar: HomeAppBar(
+          titleText: 'Notes',
+          titleIcon: Icon(Icons.notes_rounded),
+        ),
+        body: FadeAnimation(
+          delay: 2,
+          child: Stack(
+            children: [
+              Center(
+                child: ValueListenableBuilder(
+                    valueListenable: Boxes.getNotes().listenable(),
+                    builder: (context, Box box, _) {
+                      final notesList = box.values.toList().cast<Note>();
+                      return ConstrainedBox(
+                        child: (notesList.isNotEmpty || notesListFlag) ? NotesListView() : Text('No Notes yet :('),
+                        constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.40),
+                      );
+                    }),
+              ),
+              Align(
+                child: Container(
+                  child: Ink(
+                    child: IconButton(
+                      onPressed: () => showDialog<String>(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                          title: Text(
+                            'Create a new Note',
+                            textAlign: TextAlign.center,
+                          ),
+                          content: NoteForm(),
                         ),
-                        content: NoteForm(),
+                      ),
+                      icon: Icon(
+                        Icons.add,
+                        color: Colors.white,
                       ),
                     ),
-                    icon: Icon(
-                      Icons.add,
-                      color: Colors.white,
-                    ),
+                    decoration: ShapeDecoration(shape: CircleBorder(), color: Theme.of(context).primaryColor),
                   ),
-                  decoration: ShapeDecoration(shape: CircleBorder(), color: Theme.of(context).primaryColor),
+                  padding: EdgeInsets.all(10),
                 ),
-                padding: EdgeInsets.all(10),
+                alignment: Alignment.bottomRight,
               ),
-              alignment: Alignment.bottomRight,
-            ),
-          ],
+            ],
+          ),
+          direction: 'down',
         ),
-        direction: 'down',
+        backgroundColor: Theme.of(context).canvasColor,
       ),
-      backgroundColor: Theme.of(context).canvasColor,
+      onPanUpdate: (gestureDetails) {
+        if (gestureDetails.delta.dy > 5) {
+          Navigator.of(context).pop();
+        }
+      },
     );
   }
 }

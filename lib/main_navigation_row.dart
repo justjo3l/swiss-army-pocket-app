@@ -3,11 +3,19 @@
 import 'package:flutter/material.dart';
 import 'package:swiss_army_pocket_app/pages/notes.dart';
 
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
+import '../data/note.dart';
+
 import 'animations/fade_animation.dart';
 
 class MainNavigationRow extends StatelessWidget {
-  void _notesFunction(BuildContext context) {
+  Future _notesFunction(BuildContext context) async {
     print('Notes function');
+
+    await Hive.openBox<Note>('notes');
+
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => NotesScreen(),
