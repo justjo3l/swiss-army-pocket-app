@@ -1,10 +1,8 @@
-// ignore_for_file: type_init_formals, no_logic_in_create_state, prefer_const_constructors
+// ignore_for_file: type_init_formals, no_logic_in_create_state, prefer_const_constructors, unnecessary_cast
 
 import 'package:flutter/material.dart';
 
 import '../data/note.dart';
-
-import '../note_form.dart';
 
 class NotePageScreen extends StatefulWidget {
   final Note note;
@@ -74,7 +72,6 @@ class _NotePageScreenState extends State<NotePageScreen> {
             initialValue: note.noteTitle,
             onChanged: (text) {
               if (text != note.noteTitle) {
-                print('REQUIRED');
                 saveRequired();
               } else {
                 saveNotRequired();
@@ -97,9 +94,7 @@ class _NotePageScreenState extends State<NotePageScreen> {
             Visibility(
               child: IconButton(
                 icon: Icon(Icons.radar_sharp),
-                onPressed: () {
-                  print('RUN');
-                },
+                onPressed: () {},
               ),
               visible: saveOptionShown,
             )

@@ -28,7 +28,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.navigation),
+            icon: Icon(Icons.wb_sunny),
             onPressed: null,
           ),
         ],
