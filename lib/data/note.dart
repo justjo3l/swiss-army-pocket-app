@@ -1,11 +1,23 @@
-import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
-class Note {
-  final int noteIndex;
-  final String noteTitle;
-  final String noteDescription;
-  final Color noteColor;
-  final DateTime createdTime;
+part 'note.g.dart';
 
-  Note({required this.noteIndex, required this.noteTitle, required this.noteDescription, required this.noteColor, required this.createdTime});
+@HiveType(typeId: 0)
+class Note extends HiveObject {
+  @HiveField(0)
+  late int noteIndex;
+
+  @HiveField(1)
+  late String noteTitle;
+
+  @HiveField(2)
+  late String noteDescription;
+
+  @HiveField(3)
+  late String noteColor;
+
+  @HiveField(4)
+  late DateTime createdTime;
+
+  Note({required this.noteIndex, required this.noteTitle, required this.noteColor, required this.noteDescription, required this.createdTime});
 }

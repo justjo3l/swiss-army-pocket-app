@@ -1,10 +1,17 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:swiss_army_pocket_app/data/note.dart';
 import 'dart:async';
 
 import 'pages/home.dart';
 import 'data/theme.dart';
+
+import 'package:flutter/services.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
+import '../data/note.dart';
 
 class MainApp extends StatelessWidget {
   @override
@@ -17,4 +24,13 @@ class MainApp extends StatelessWidget {
   }
 }
 
-Future<void> main() async => runApp(MainApp());
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Hive.initFlutter();
+
+  Hive.registerAdapter(NoteAdapter());
+  await Hive.openBox<Note>('notes');
+
+  runApp(MainApp());
+}
