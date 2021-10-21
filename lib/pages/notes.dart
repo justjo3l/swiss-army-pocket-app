@@ -54,14 +54,6 @@ class _NotesScreenState extends State<NotesScreen> {
     box.delete(index);
   }
 
-  Future showNoteDialog() async {
-    print('This ran!');
-    return AlertDialog(
-      title: Text('Create a new Note'),
-      content: NoteForm(),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +83,10 @@ class _NotesScreenState extends State<NotesScreen> {
                     onPressed: () => showDialog<String>(
                       context: context,
                       builder: (BuildContext context) => AlertDialog(
-                        title: Text('Create a new Note'),
+                        title: Text(
+                          'Create a new Note',
+                          textAlign: TextAlign.center,
+                        ),
                         content: NoteForm(),
                       ),
                     ),

@@ -1,3 +1,5 @@
+// ignore_for_file: annotate_overrides, use_key_in_widget_constructors, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 import '../data/note.dart';
@@ -10,6 +12,7 @@ class NoteForm extends StatefulWidget {
 class NoteFormState extends State<NoteForm> {
   final _formKey = GlobalKey<FormState>();
 
+  String noteTitleErrorText = '';
   late String formTitle;
   late String formDescription;
   String formColor = Colors.blue.toString();
@@ -32,45 +35,56 @@ class NoteFormState extends State<NoteForm> {
   }
 
   void buttonPressed() {
-    _formKey.currentState!.save();
-    addNote(getNumOfNotes(), formTitle, formDescription, formColor);
-    Navigator.of(context).pop();
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      addNote(getNumOfNotes(), formTitle, formDescription, formColor);
+      Navigator.of(context).pop();
+    } else {
+      _formKey.currentState!.validate();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: [
-          TextFormField(
-            decoration: const InputDecoration(
-              labelText: 'Note Title *',
+    return SizedBox(
+      child: Form(
+        key: _formKey,
+        child: Column(
+          children: [
+            TextFormField(
+              decoration: InputDecoration(
+                labelText: 'Note Title *',
+                errorText: noteTitleErrorText,
+              ),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Note Title is required!';
+                } else {
+                  return null;
+                }
+              },
+              onSaved: (String? value) {
+                formTitle = value as String;
+              },
             ),
-            validator: (String? value) {
-              return (value == null ? 'Note Title is required!' : null);
-            },
-            onSaved: (String? value) {
-              formTitle = value as String;
-            },
-          ),
-          TextFormField(
-            decoration: const InputDecoration(
-              labelText: 'Note Description *',
+            TextFormField(
+              decoration: const InputDecoration(
+                labelText: 'Note Description',
+              ),
+              onSaved: (String? value) {
+                formDescription = value as String;
+              },
             ),
-            validator: (String? value) {
-              return (value == null ? 'Note Description is required!' : null);
-            },
-            onSaved: (String? value) {
-              formDescription = value as String;
-            },
-          ),
-          ElevatedButton(
-            onPressed: buttonPressed,
-            child: Text('Create'),
-          ),
-        ],
+            ElevatedButton(
+              onPressed: buttonPressed,
+              child: Text('Create'),
+            ),
+          ],
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        ),
       ),
+      width: MediaQuery.of(context).size.width * 0.8,
+      height: MediaQuery.of(context).size.height * 0.25,
     );
   }
 }
