@@ -10,7 +10,7 @@ class NoteForm extends StatefulWidget {
 }
 
 class NoteFormState extends State<NoteForm> {
-  final _formKey = GlobalKey<FormState>();
+  var formKey = GlobalKey<FormState>();
 
   String noteTitleErrorText = '';
   late String formTitle;
@@ -35,12 +35,12 @@ class NoteFormState extends State<NoteForm> {
   }
 
   void buttonPressed() {
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
       addNote(getNumOfNotes(), formTitle, formDescription, formColor);
       Navigator.of(context).pop();
     } else {
-      _formKey.currentState!.validate();
+      formKey.currentState!.validate();
     }
   }
 
@@ -48,7 +48,7 @@ class NoteFormState extends State<NoteForm> {
   Widget build(BuildContext context) {
     return SizedBox(
       child: Form(
-        key: _formKey,
+        key: formKey,
         child: Column(
           children: [
             TextFormField(
