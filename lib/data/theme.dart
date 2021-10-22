@@ -33,7 +33,7 @@ class AppTheme {
     900: Color.fromRGBO(224, 211, 211, 1),
   };
 
-  static ThemeData getAppTheme() {
+  static ThemeData getLightTheme() {
     return ThemeData(
       brightness: Brightness.light,
       primarySwatch: MaterialColor(mainThemeColorHex, mainThemeColor),
@@ -49,6 +49,36 @@ class AppTheme {
       buttonTheme: ButtonThemeData(
         shape: RoundedRectangleBorder(),
         buttonColor: MaterialColor(mainThemeColorHex, mainThemeColor),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+          shape: MaterialStateProperty.all(RoundedRectangleBorder()),
+          backgroundColor: MaterialStateProperty.all(MaterialColor(mainThemeColorHex, mainThemeColor)),
+        ),
+      ),
+    );
+  }
+
+  static ThemeData getDarkTheme() {
+    return ThemeData(
+      brightness: Brightness.dark,
+      primaryIconTheme: IconThemeData(
+        color: Colors.white,
+      ),
+      primaryTextTheme: TextTheme(
+        headline6: TextStyle(
+          color: Colors.white,
+        ),
+      ),
+      buttonTheme: ButtonThemeData(
+        shape: RoundedRectangleBorder(),
+        buttonColor: Colors.grey,
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+            shape: MaterialStateProperty.all(RoundedRectangleBorder()),
+            backgroundColor: MaterialStateProperty.all(Colors.grey[800]),
+            elevation: MaterialStateProperty.all(10.0)),
       ),
     );
   }

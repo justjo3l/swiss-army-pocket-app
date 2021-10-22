@@ -13,14 +13,30 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../data/note.dart';
 
-class MainApp extends StatelessWidget {
+class MainApp extends StatefulWidget {
+  MainAppState createState() => MainAppState();
+
+  static MainAppState of(BuildContext context) => context.findAncestorStateOfType<MainAppState>() as MainAppState;
+}
+
+class MainAppState extends State<MainApp> {
+  ThemeMode _themeMode = ThemeMode.system;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Swiss Army Pocket App',
       home: Home(),
-      theme: AppTheme.getAppTheme(),
+      theme: AppTheme.getLightTheme(),
+      darkTheme: AppTheme.getDarkTheme(),
+      themeMode: _themeMode,
     );
+  }
+
+  void changeTheme(ThemeMode themeMode) {
+    setState(() {
+      _themeMode = themeMode;
+    });
   }
 }
 
