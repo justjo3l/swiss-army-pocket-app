@@ -1,9 +1,10 @@
 // ignore_for_file: unused_import, prefer_final_fields, unused_field, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:swiss_army_pocket_app/note_list_view.dart';
+import '../note_list_view.dart';
+import '../note_grid_view.dart';
 
-import '../home_app_bar.dart';
+import '../notes_app_bar.dart';
 import '../animations/fade_animation.dart';
 
 import '../main.dart';
@@ -24,10 +25,14 @@ class NotesScreen extends StatefulWidget {
 
   @override
   _NotesScreenState createState() => _NotesScreenState();
+
+  static _NotesScreenState of(BuildContext context) => context.findAncestorStateOfType<_NotesScreenState>() as _NotesScreenState;
 }
 
 class _NotesScreenState extends State<NotesScreen> {
   bool notesListFlag = false;
+
+  bool notesListViewStatus = true;
 
   @override
   void dispose() {
@@ -58,7 +63,7 @@ class _NotesScreenState extends State<NotesScreen> {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Scaffold(
-        appBar: HomeAppBar(
+        appBar: NotesAppBar(
           titleText: 'Notes',
           titleIcon: Icon(Icons.notes_rounded),
         ),
@@ -71,10 +76,12 @@ class _NotesScreenState extends State<NotesScreen> {
                     valueListenable: Boxes.getNotes().listenable(),
                     builder: (context, Box box, _) {
                       final notesList = box.values.toList().cast<Note>();
-                      return ConstrainedBox(
-                        child: (notesList.isNotEmpty || notesListFlag) ? NotesListView() : Text('No Notes yet :('),
-                        constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.40),
-                      );
+                      return notesListViewStatus
+                          ? ConstrainedBox(
+                              child: (notesList.isNotEmpty || notesListFlag) ? NotesListView() : Text('No Notes yet :('),
+                              constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.40),
+                            )
+                          : NotesGridView();
                     }),
               ),
               Align(
@@ -118,5 +125,11 @@ class _NotesScreenState extends State<NotesScreen> {
         }
       },
     );
+  }
+
+  void changeView(bool status) {
+    setState(() {
+      notesListViewStatus = status;
+    });
   }
 }

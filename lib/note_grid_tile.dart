@@ -7,7 +7,7 @@ import './pages/note_page.dart';
 
 import './data/note.dart';
 
-class NoteTile extends StatelessWidget {
+class NoteGridTile extends StatelessWidget {
   final Note note;
   final int numOfNotes;
 
@@ -22,7 +22,7 @@ class NoteTile extends StatelessWidget {
     );
   }
 
-  NoteTile({
+  NoteGridTile({
     required this.note,
     required this.numOfNotes,
   });
@@ -54,10 +54,8 @@ class NoteTile extends StatelessWidget {
             ],
           ),
           color: Colors.white,
-          margin: EdgeInsets.only(
-            top: 20.0,
-            left: note.noteIndex == 0 ? 40.0 : 10.0,
-            right: note.noteIndex == numOfNotes - 1 ? 40.0 : 10.0,
+          margin: EdgeInsets.all(
+            10.0,
           ),
           padding: EdgeInsets.all(5.0),
           width: MediaQuery.of(context).size.width * 0.80,
