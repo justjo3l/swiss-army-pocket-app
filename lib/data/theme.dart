@@ -38,12 +38,16 @@ class AppTheme {
       brightness: Brightness.light,
       primarySwatch: MaterialColor(mainThemeColorHex, mainThemeColor),
       canvasColor: MaterialColor(secondaryThemeColorHex, secondaryThemeColor),
+      cardColor: Colors.white,
       primaryIconTheme: IconThemeData(
         color: Colors.white,
       ),
       primaryTextTheme: TextTheme(
         headline6: TextStyle(
           color: Colors.white,
+        ),
+        headline5: TextStyle(
+          color: Colors.black,
         ),
       ),
       buttonTheme: ButtonThemeData(
@@ -62,11 +66,15 @@ class AppTheme {
   static ThemeData getDarkTheme() {
     return ThemeData(
       brightness: Brightness.dark,
+      cardColor: Colors.grey[800],
       primaryIconTheme: IconThemeData(
         color: Colors.white,
       ),
       primaryTextTheme: TextTheme(
         headline6: TextStyle(
+          color: Colors.white,
+        ),
+        headline5: TextStyle(
           color: Colors.white,
         ),
       ),

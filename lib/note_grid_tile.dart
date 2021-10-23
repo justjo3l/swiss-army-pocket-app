@@ -39,6 +39,7 @@ class NoteGridTile extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
+                  color: Theme.of(context).primaryTextTheme.headline5!.color,
                 ),
               ),
               SizedBox(
@@ -48,12 +49,13 @@ class NoteGridTile extends StatelessWidget {
                 note.noteDescription,
                 style: TextStyle(
                   fontSize: 12,
+                  color: Theme.of(context).primaryTextTheme.headline5!.color,
                 ),
                 textAlign: TextAlign.center,
               ),
             ],
           ),
-          color: Colors.white,
+          color: Theme.of(context).cardColor,
           margin: EdgeInsets.all(
             10.0,
           ),
