@@ -37,6 +37,8 @@ dependencies:
   simple_animations: ^4.0.1
   hive: ^2.0.4
   hive_flutter: ^1.1.0
+  path_provider: ^2.0.5
+  flutter_launcher_icons: ^0.9.2
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +55,11 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "C:/Users/PC/Desktop/Coding Projects/flutter/Course/swiss_army_pocket_app/icons/swiss_army_pocket_app_icon.png"
 
 # The following section is specific to Flutter.
 flutter:

@@ -84,7 +84,7 @@ class NoteFormState extends State<NoteForm> {
         ),
       ),
       width: MediaQuery.of(context).size.width * 0.8,
-      height: MediaQuery.of(context).size.height * 0.25,
+      height: MediaQuery.of(context).size.height * 0.40,
     );
   }
 }

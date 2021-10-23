@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.swiss_army_pocket_app">
    <application
-        android:label="swiss_army_pocket_app"
+        android:label="Swiss Army Pocket App"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

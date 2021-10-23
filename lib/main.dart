@@ -3,6 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:swiss_army_pocket_app/data/note.dart';
 import 'dart:async';
+import 'dart:io';
+
+import 'package:path_provider/path_provider.dart' as pathProvider;
 
 import 'pages/home.dart';
 import 'data/theme.dart';
@@ -43,7 +46,9 @@ class MainAppState extends State<MainApp> {
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Hive.initFlutter();
+  Directory directory = await pathProvider.getApplicationDocumentsDirectory();
+
+  await Hive.initFlutter(directory.path);
 
   Hive.registerAdapter(NoteAdapter());
 
