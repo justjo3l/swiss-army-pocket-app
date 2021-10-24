@@ -32,28 +32,31 @@ class NoteListTile extends StatelessWidget {
     return Hero(
       child: GestureDetector(
         child: Container(
-          child: Column(
-            children: [
-              Text(
-                note.noteTitle,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).primaryTextTheme.headline5!.color,
+          child: Material(
+            child: Column(
+              children: [
+                Text(
+                  note.noteTitle,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).primaryTextTheme.headline5!.color,
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              Text(
-                note.noteDescription,
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Theme.of(context).primaryTextTheme.headline5!.color,
+                SizedBox(
+                  height: 10.0,
                 ),
-                textAlign: TextAlign.center,
-              ),
-            ],
+                Text(
+                  note.noteDescription,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Theme.of(context).primaryTextTheme.headline5!.color,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+            color: Theme.of(context).cardColor,
           ),
           color: Theme.of(context).cardColor,
           margin: EdgeInsets.only(
