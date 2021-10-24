@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'pages/notes.dart';
 import 'pages/feedback.dart';
+import 'pages/calculate.dart';
 
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -34,8 +35,14 @@ class MainNavigationRow extends StatelessWidget {
     );
   }
 
-  void _calculateFunction() {
+  void _calculateFunction(BuildContext context) {
     print('Calculate function');
+
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => CalculateScreen(),
+      ),
+    );
   }
 
   Widget build(BuildContext context) {
@@ -93,7 +100,10 @@ class MainNavigationRow extends StatelessWidget {
           FadeAnimation(
             delay: 1.5,
             child: ElevatedButton(
-              onPressed: _calculateFunction,
+              onPressed: null,
+              // () {
+              //   _calculateFunction(context);
+              // },
               child: Icon(
                 Icons.calculate_rounded,
                 size: 70,
