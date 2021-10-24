@@ -25,6 +25,9 @@ class _NotePageScreenState extends State<NotePageScreen> {
   Note note;
   int numOfNotes;
 
+  bool titleFillStatus = false;
+  bool descriptionFillStatus = false;
+
   late String newNoteTitle;
   late String newNoteDescription;
 
@@ -51,12 +54,18 @@ class _NotePageScreenState extends State<NotePageScreen> {
     note.noteTitle = newNoteTitle;
     note.save();
     saveNotRequired();
+    setState(() {
+      titleFillStatus = false;
+    });
   }
 
   Future editNoteDescription(Note note, String newNoteDescription) async {
     note.noteDescription = newNoteDescription;
     note.save();
     saveNotRequired();
+    setState(() {
+      descriptionFillStatus = false;
+    });
   }
 
   Future deleteNote(Note note) async {
@@ -81,6 +90,24 @@ class _NotePageScreenState extends State<NotePageScreen> {
               newNoteTitle = text as String;
               editNoteTitle(note, newNoteTitle);
             },
+            onTap: () {
+              setState(() {
+                titleFillStatus = true;
+              });
+            },
+            cursorHeight: 1,
+            cursorWidth: 1,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderSide: BorderSide.none,
+              ),
+              filled: titleFillStatus,
+              fillColor: Colors.white,
+              constraints: BoxConstraints(
+                maxHeight: 30,
+                maxWidth: 400,
+              ),
+            ),
           ),
           centerTitle: true,
           actions: [
@@ -114,6 +141,20 @@ class _NotePageScreenState extends State<NotePageScreen> {
               newNoteDescription = text as String;
               editNoteDescription(note, newNoteDescription);
             },
+            onTap: () {
+              setState(() {
+                descriptionFillStatus = true;
+              });
+            },
+            cursorHeight: 1,
+            cursorWidth: 1,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderSide: BorderSide.none,
+              ),
+              filled: descriptionFillStatus,
+              fillColor: Colors.white,
+            ),
           ),
           margin: EdgeInsets.all(10.0),
           padding: EdgeInsets.only(
