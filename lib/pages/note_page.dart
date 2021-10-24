@@ -120,7 +120,7 @@ class _NotePageScreenState extends State<NotePageScreen> {
             ),
             Visibility(
               child: IconButton(
-                icon: Icon(Icons.radar_sharp),
+                icon: Icon(Icons.change_history),
                 onPressed: () {},
               ),
               visible: saveOptionShown,
