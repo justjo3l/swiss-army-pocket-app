@@ -53,6 +53,8 @@ class NoteGridTile extends StatelessWidget {
                     color: Theme.of(context).primaryTextTheme.headline5!.color,
                   ),
                   textAlign: TextAlign.center,
+                  maxLines: 8,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),

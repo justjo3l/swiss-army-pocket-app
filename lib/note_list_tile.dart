@@ -38,7 +38,7 @@ class NoteListTile extends StatelessWidget {
                 Text(
                   note.noteTitle,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).primaryTextTheme.headline5!.color,
                   ),
@@ -49,10 +49,12 @@ class NoteListTile extends StatelessWidget {
                 Text(
                   note.noteDescription,
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 16,
                     color: Theme.of(context).primaryTextTheme.headline5!.color,
                   ),
                   textAlign: TextAlign.center,
+                  maxLines: 8,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),
