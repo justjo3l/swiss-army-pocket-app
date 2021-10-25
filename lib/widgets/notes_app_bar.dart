@@ -1,15 +1,17 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_typing_uninitialized_variables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_typing_uninitialized_variables, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:swiss_army_pocket_app/main.dart';
 
-import 'animations/fade_animation.dart';
+import '../animations/fade_animation.dart';
 
-class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
+import '../pages/notes.dart';
+
+class NotesAppBar extends StatelessWidget implements PreferredSizeWidget {
   final titleText;
   final Icon titleIcon;
 
-  HomeAppBar({
+  NotesAppBar({
     required this.titleText,
     required this.titleIcon,
   });
@@ -30,17 +32,17 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         actions: <Widget>[
           Visibility(
             child: IconButton(
-              icon: Icon(Icons.light_mode),
-              onPressed: () => MainApp.of(context).changeTheme(ThemeMode.dark),
+              icon: Icon(Icons.view_list),
+              onPressed: () => NotesScreen.of(context).changeView(false),
             ),
-            visible: Theme.of(context).brightness == Brightness.light ? true : false,
+            visible: NotesScreen.of(context).notesListViewStatus == true ? true : false,
           ),
           Visibility(
               child: IconButton(
-                icon: Icon(Icons.dark_mode),
-                onPressed: () => MainApp.of(context).changeTheme(ThemeMode.light),
+                icon: Icon(Icons.grid_view),
+                onPressed: () => NotesScreen.of(context).changeView(true),
               ),
-              visible: Theme.of(context).brightness == Brightness.dark ? true : false),
+              visible: NotesScreen.of(context).notesListViewStatus == false ? true : false),
         ],
       ),
       direction: 'down',

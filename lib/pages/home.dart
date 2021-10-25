@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 
-import '/./home_app_bar.dart';
-import '/./main_navigation_row.dart';
+import '../widgets/home_app_bar.dart';
+import '../widgets/main_navigation_row.dart';
 
 import 'notes.dart';
 

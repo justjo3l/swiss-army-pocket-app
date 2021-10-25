@@ -3,12 +3,12 @@ import 'package:flutter/cupertino.dart';
 //import './data/custom_scroll_physics.dart';
 
 import 'note_list_tile.dart';
-import './data/note.dart';
+import '../data/note.dart';
 
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import './data/boxes.dart';
+import '../data/boxes.dart';
 
 class NotesListView extends StatefulWidget {
   const NotesListView({Key? key}) : super(key: key);

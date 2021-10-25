@@ -1,10 +1,10 @@
 // ignore_for_file: unused_import, prefer_final_fields, unused_field, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import '../note_list_view.dart';
-import '../note_grid_view.dart';
+import '../widgets/note_list_view.dart';
+import '../widgets/note_grid_view.dart';
 
-import '../notes_app_bar.dart';
+import '../widgets/notes_app_bar.dart';
 import '../animations/fade_animation.dart';
 
 import '../main.dart';
@@ -18,7 +18,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../data/boxes.dart';
 
-import './../note_form.dart';
+import '../widgets/note_form.dart';
 
 class NotesScreen extends StatefulWidget {
   const NotesScreen({Key? key}) : super(key: key);

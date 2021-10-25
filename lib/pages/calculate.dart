@@ -2,10 +2,10 @@
 
 import 'package:flutter/material.dart';
 
-import '/./calculate_app_bar.dart';
-import '/./main_navigation_row.dart';
+import '../widgets/calculate_app_bar.dart';
+import '../widgets/main_navigation_row.dart';
 
-import '../calculate_button.dart';
+import '../widgets/calculate_button.dart';
 
 class CalculateScreen extends StatefulWidget {
   const CalculateScreen({Key? key}) : super(key: key);

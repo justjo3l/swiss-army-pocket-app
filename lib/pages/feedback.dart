@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 
-import '/./feedback_app_bar.dart';
-import '/./main_navigation_row.dart';
+import '../widgets/feedback_app_bar.dart';
+import '../widgets/main_navigation_row.dart';
 
 import 'dart:convert';
 

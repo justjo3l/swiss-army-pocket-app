@@ -5,12 +5,12 @@ import 'package:flutter/cupertino.dart';
 //import './data/custom_scroll_physics.dart';
 
 import 'note_grid_tile.dart';
-import './data/note.dart';
+import '../data/note.dart';
 
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import './data/boxes.dart';
+import '../data/boxes.dart';
 
 class NotesGridView extends StatefulWidget {
   const NotesGridView({Key? key}) : super(key: key);

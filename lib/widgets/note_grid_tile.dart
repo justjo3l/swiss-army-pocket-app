@@ -2,10 +2,10 @@
 
 import 'package:flutter/material.dart';
 
-import './main.dart';
-import './pages/note_page.dart';
+import '../main.dart';
+import '../pages/note_page.dart';
 
-import './data/note.dart';
+import '../data/note.dart';
 
 class NoteGridTile extends StatelessWidget {
   final Note note;

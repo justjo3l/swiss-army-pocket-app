@@ -3,15 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:swiss_army_pocket_app/main.dart';
 
-import 'animations/fade_animation.dart';
+import '../animations/fade_animation.dart';
 
-import 'pages/notes.dart';
-
-class FeedbackAppBar extends StatelessWidget implements PreferredSizeWidget {
+class CalculateAppBar extends StatelessWidget implements PreferredSizeWidget {
   final titleText;
   final Icon titleIcon;
 
-  FeedbackAppBar({
+  CalculateAppBar({
     required this.titleText,
     required this.titleIcon,
   });

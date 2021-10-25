@@ -1,16 +1,16 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_typing_uninitialized_variables, annotate_overrides, avoid_print
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_typing_uninitialized_variables, annotate_overrides, avoid_print, unused_element
 
 import 'package:flutter/material.dart';
-import 'pages/notes.dart';
-import 'pages/feedback.dart';
-import 'pages/calculate.dart';
+import '../pages/notes.dart';
+import '../pages/feedback.dart';
+import '../pages/calculate.dart';
 
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../data/note.dart';
+import '../../data/note.dart';
 
-import 'animations/fade_animation.dart';
+import '../animations/fade_animation.dart';
 
 class MainNavigationRow extends StatelessWidget {
   Future _notesFunction(BuildContext context) async {

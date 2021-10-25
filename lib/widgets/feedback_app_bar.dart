@@ -3,15 +3,15 @@
 import 'package:flutter/material.dart';
 import 'package:swiss_army_pocket_app/main.dart';
 
-import 'animations/fade_animation.dart';
+import '../animations/fade_animation.dart';
 
-import 'pages/notes.dart';
+import '../pages/notes.dart';
 
-class NotesAppBar extends StatelessWidget implements PreferredSizeWidget {
+class FeedbackAppBar extends StatelessWidget implements PreferredSizeWidget {
   final titleText;
   final Icon titleIcon;
 
-  NotesAppBar({
+  FeedbackAppBar({
     required this.titleText,
     required this.titleIcon,
   });
@@ -29,21 +29,6 @@ class NotesAppBar extends StatelessWidget implements PreferredSizeWidget {
         title: Text(
           titleText,
         ),
-        actions: <Widget>[
-          Visibility(
-            child: IconButton(
-              icon: Icon(Icons.view_list),
-              onPressed: () => NotesScreen.of(context).changeView(false),
-            ),
-            visible: NotesScreen.of(context).notesListViewStatus == true ? true : false,
-          ),
-          Visibility(
-              child: IconButton(
-                icon: Icon(Icons.grid_view),
-                onPressed: () => NotesScreen.of(context).changeView(true),
-              ),
-              visible: NotesScreen.of(context).notesListViewStatus == false ? true : false),
-        ],
       ),
       direction: 'down',
     );

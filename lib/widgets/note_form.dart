@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 
-import '../data/note.dart';
-import '../data/boxes.dart';
+import '../../data/note.dart';
+import '../../data/boxes.dart';
 
 class NoteForm extends StatefulWidget {
   NoteFormState createState() => NoteFormState();

@@ -3,13 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:swiss_army_pocket_app/main.dart';
 
-import 'animations/fade_animation.dart';
+import '../animations/fade_animation.dart';
 
-class CalculateAppBar extends StatelessWidget implements PreferredSizeWidget {
+class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final titleText;
   final Icon titleIcon;
 
-  CalculateAppBar({
+  HomeAppBar({
     required this.titleText,
     required this.titleIcon,
   });
@@ -27,6 +27,21 @@ class CalculateAppBar extends StatelessWidget implements PreferredSizeWidget {
         title: Text(
           titleText,
         ),
+        actions: <Widget>[
+          Visibility(
+            child: IconButton(
+              icon: Icon(Icons.light_mode),
+              onPressed: () => MainApp.of(context).changeTheme(ThemeMode.dark),
+            ),
+            visible: Theme.of(context).brightness == Brightness.light ? true : false,
+          ),
+          Visibility(
+              child: IconButton(
+                icon: Icon(Icons.dark_mode),
+                onPressed: () => MainApp.of(context).changeTheme(ThemeMode.light),
+              ),
+              visible: Theme.of(context).brightness == Brightness.dark ? true : false),
+        ],
       ),
       direction: 'down',
     );
