@@ -33,6 +33,20 @@ class _NotePageScreenState extends State<NotePageScreen> {
 
   bool saveOptionShown = false;
 
+  late TextEditingController noteTitleController;
+  late TextEditingController noteDescriptionController;
+
+  @override
+  void initState() {
+    super.initState();
+    noteTitleController = TextEditingController(
+      text: note.noteTitle,
+    );
+    noteDescriptionController = TextEditingController(
+      text: note.noteDescription,
+    );
+  }
+
   _NotePageScreenState({
     required this.note,
     required this.numOfNotes,
@@ -50,20 +64,13 @@ class _NotePageScreenState extends State<NotePageScreen> {
     });
   }
 
-  Future editNoteTitle(Note note, String newNoteTitle) async {
+  Future editNote(Note note, String newNoteTitle, String newNoteDescription) async {
     note.noteTitle = newNoteTitle;
-    note.save();
-    saveNotRequired();
-    setState(() {
-      titleFillStatus = false;
-    });
-  }
-
-  Future editNoteDescription(Note note, String newNoteDescription) async {
     note.noteDescription = newNoteDescription;
     note.save();
     saveNotRequired();
     setState(() {
+      titleFillStatus = false;
       descriptionFillStatus = false;
     });
   }
@@ -78,7 +85,6 @@ class _NotePageScreenState extends State<NotePageScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: TextFormField(
-            initialValue: note.noteTitle,
             onChanged: (text) {
               if (text != note.noteTitle) {
                 saveRequired();
@@ -86,15 +92,12 @@ class _NotePageScreenState extends State<NotePageScreen> {
                 saveNotRequired();
               }
             },
-            onFieldSubmitted: (text) {
-              newNoteTitle = text as String;
-              editNoteTitle(note, newNoteTitle);
-            },
             onTap: () {
               setState(() {
                 titleFillStatus = true;
               });
             },
+            controller: noteTitleController,
             cursorHeight: 1,
             cursorWidth: 1,
             decoration: InputDecoration(
@@ -120,8 +123,12 @@ class _NotePageScreenState extends State<NotePageScreen> {
             ),
             Visibility(
               child: IconButton(
-                icon: Icon(Icons.change_history),
-                onPressed: () {},
+                icon: Icon(Icons.save),
+                onPressed: () {
+                  newNoteTitle = noteTitleController.text;
+                  newNoteDescription = noteDescriptionController.text;
+                  editNote(note, newNoteTitle, newNoteDescription);
+                },
               ),
               visible: saveOptionShown,
             )
@@ -129,7 +136,6 @@ class _NotePageScreenState extends State<NotePageScreen> {
         ),
         body: Container(
           child: TextFormField(
-            initialValue: note.noteDescription,
             onChanged: (text) {
               if (text != note.noteDescription) {
                 saveRequired();
@@ -137,15 +143,12 @@ class _NotePageScreenState extends State<NotePageScreen> {
                 saveNotRequired();
               }
             },
-            onFieldSubmitted: (text) {
-              newNoteDescription = text as String;
-              editNoteDescription(note, newNoteDescription);
-            },
             onTap: () {
               setState(() {
                 descriptionFillStatus = true;
               });
             },
+            controller: noteDescriptionController,
             cursorHeight: 1,
             cursorWidth: 1,
             decoration: InputDecoration(
@@ -155,6 +158,8 @@ class _NotePageScreenState extends State<NotePageScreen> {
               filled: descriptionFillStatus,
               fillColor: Colors.white,
             ),
+            minLines: 10,
+            maxLines: 20,
           ),
           margin: EdgeInsets.all(10.0),
           padding: EdgeInsets.only(
