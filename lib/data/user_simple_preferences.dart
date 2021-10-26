@@ -9,7 +9,7 @@ class UserSimplePreferences {
 
   static Future init() async => _preferences = await SharedPreferences.getInstance();
 
-  static Future setTheme(ThemeMode themeMode) async => await _preferences.setString(_keyThemeMode, '' /**themeMode.toString()*/);
+  static Future setTheme(ThemeMode themeMode) async => await _preferences.setString(_keyThemeMode, themeMode.toString());
 
   static getTheme() => _preferences.getString(_keyThemeMode);
 }
