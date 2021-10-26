@@ -4,27 +4,43 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 
+import '../pages/calculate.dart';
+
 class CalculateButton extends StatelessWidget {
   CalculateButton({
     required this.buttonText,
   });
+
   String buttonText;
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: null,
-      child: Text(
-        buttonText,
-        style: TextStyle(fontSize: 30),
-      ),
-      style: ButtonStyle(
-          minimumSize: MaterialStateProperty.all(
-            Size(MediaQuery.of(context).size.width * 1 / 3, 100),
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.1,
+      color: Theme.of(context).primaryColor,
+      child: TextButton(
+        style: ButtonStyle(
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(0.0),
+              side: BorderSide(
+                width: 1,
+                style: BorderStyle.solid,
+              ),
+            ),
           ),
-          side: MaterialStateProperty.all(BorderSide(
-            style: BorderStyle.solid,
-            color: Colors.black,
-          ))),
+          padding: MaterialStateProperty.all(EdgeInsets.all(15.0)),
+        ),
+        onPressed: () {
+          CalculateScreen.of(context).buttonPressed(buttonText);
+        },
+        child: Text(
+          buttonText,
+          style: TextStyle(
+            fontSize: 32.0,
+            color: Theme.of(context).primaryTextTheme.headline6!.color,
+          ),
+        ),
+      ),
     );
   }
 }
