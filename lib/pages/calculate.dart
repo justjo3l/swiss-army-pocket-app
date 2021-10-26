@@ -23,53 +23,6 @@ class CalculateScreenState extends State<CalculateScreen> {
           titleText: 'Calculate',
           titleIcon: Icon(Icons.calculate),
         ),
-        body: Form(
-          child: Center(
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    CalculateButton(
-                      buttonText: '7',
-                    ),
-                    CalculateButton(
-                      buttonText: '8',
-                    ),
-                    CalculateButton(
-                      buttonText: '9',
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    CalculateButton(
-                      buttonText: '6',
-                    ),
-                    CalculateButton(
-                      buttonText: '5',
-                    ),
-                    CalculateButton(
-                      buttonText: '4',
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    CalculateButton(
-                      buttonText: '3',
-                    ),
-                    CalculateButton(
-                      buttonText: '2',
-                    ),
-                    CalculateButton(
-                      buttonText: '1',
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
       ),
     );
   }
