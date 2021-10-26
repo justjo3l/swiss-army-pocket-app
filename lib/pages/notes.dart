@@ -67,55 +67,51 @@ class _NotesScreenState extends State<NotesScreen> {
           titleText: 'Notes',
           titleIcon: Icon(Icons.notes_rounded),
         ),
-        body: FadeAnimation(
-          delay: 2,
-          child: Stack(
-            children: [
-              Center(
-                child: ValueListenableBuilder(
-                    valueListenable: Boxes.getNotes().listenable(),
-                    builder: (context, Box box, _) {
-                      final notesList = box.values.toList().cast<Note>();
-                      return notesListViewStatus
-                          ? ConstrainedBox(
-                              child: (notesList.isNotEmpty || notesListFlag) ? NotesListView() : Text('No Notes yet :('),
-                              constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.45),
-                            )
-                          : NotesGridView();
-                    }),
-              ),
-              Align(
-                child: Container(
-                  child: RawMaterialButton(
-                    onPressed: () => showDialog<String>(
-                      context: context,
-                      builder: (BuildContext context) => AlertDialog(
-                        title: Text(
-                          'Create a new Note',
-                          textAlign: TextAlign.center,
-                        ),
-                        content: NoteForm(),
+        body: Stack(
+          children: [
+            Center(
+              child: ValueListenableBuilder(
+                  valueListenable: Boxes.getNotes().listenable(),
+                  builder: (context, Box box, _) {
+                    final notesList = box.values.toList().cast<Note>();
+                    return notesListViewStatus
+                        ? ConstrainedBox(
+                            child: (notesList.isNotEmpty || notesListFlag) ? NotesListView() : Text('No Notes yet :('),
+                            constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.45),
+                          )
+                        : NotesGridView();
+                  }),
+            ),
+            Align(
+              child: Container(
+                child: RawMaterialButton(
+                  onPressed: () => showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                      title: Text(
+                        'Create a new Note',
+                        textAlign: TextAlign.center,
                       ),
+                      content: NoteForm(),
                     ),
-                    child: Icon(
-                      Icons.add,
-                      color: Colors.white,
-                      size: 40.0,
-                    ),
-                    fillColor: Theme.of(context).primaryColor,
-                    shape: CircleBorder(),
-                    padding: EdgeInsets.all(10.0),
                   ),
-                  padding: EdgeInsets.only(
-                    bottom: 20,
-                    left: 20,
+                  child: Icon(
+                    Icons.add,
+                    color: Colors.white,
+                    size: 40.0,
                   ),
+                  fillColor: Theme.of(context).primaryColor,
+                  shape: CircleBorder(),
+                  padding: EdgeInsets.all(10.0),
                 ),
-                alignment: Alignment.bottomRight,
+                padding: EdgeInsets.only(
+                  bottom: 20,
+                  left: 20,
+                ),
               ),
-            ],
-          ),
-          direction: 'down',
+              alignment: Alignment.bottomRight,
+            ),
+          ],
         ),
         backgroundColor: Theme.of(context).canvasColor,
       ),

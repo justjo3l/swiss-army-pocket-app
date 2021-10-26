@@ -50,6 +50,7 @@ class AppTheme {
           color: Colors.black,
         ),
       ),
+      secondaryHeaderColor: Colors.white,
       buttonTheme: ButtonThemeData(
         shape: RoundedRectangleBorder(),
         buttonColor: MaterialColor(mainThemeColorHex, mainThemeColor),
@@ -78,6 +79,7 @@ class AppTheme {
           color: Colors.white,
         ),
       ),
+      secondaryHeaderColor: Colors.grey,
       buttonTheme: ButtonThemeData(
         shape: RoundedRectangleBorder(),
         buttonColor: Colors.grey,

@@ -17,14 +17,15 @@ class CalculateButton extends StatelessWidget {
     return Container(
       height: MediaQuery.of(context).size.height * 0.1,
       color: Theme.of(context).primaryColor,
-      child: TextButton(
+      child: ElevatedButton(
         style: ButtonStyle(
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(0.0),
+              borderRadius: BorderRadius.circular(5.0),
               side: BorderSide(
-                width: 1,
+                width: 0.3,
                 style: BorderStyle.solid,
+                color: Theme.of(context).secondaryHeaderColor,
               ),
             ),
           ),

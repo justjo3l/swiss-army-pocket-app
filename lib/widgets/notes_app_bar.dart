@@ -18,34 +18,30 @@ class NotesAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FadeAnimation(
-      delay: 0,
-      child: AppBar(
-        centerTitle: true,
-        iconTheme: Theme.of(context).primaryIconTheme,
-        titleTextStyle: Theme.of(context).primaryTextTheme.headline6,
-        actionsIconTheme: Theme.of(context).primaryIconTheme,
-        leading: titleIcon,
-        title: Text(
-          titleText,
-        ),
-        actions: <Widget>[
-          Visibility(
-            child: IconButton(
-              icon: Icon(Icons.view_list),
-              onPressed: () => NotesScreen.of(context).changeView(false),
-            ),
-            visible: NotesScreen.of(context).notesListViewStatus == true ? true : false,
-          ),
-          Visibility(
-              child: IconButton(
-                icon: Icon(Icons.grid_view),
-                onPressed: () => NotesScreen.of(context).changeView(true),
-              ),
-              visible: NotesScreen.of(context).notesListViewStatus == false ? true : false),
-        ],
+    return AppBar(
+      centerTitle: true,
+      iconTheme: Theme.of(context).primaryIconTheme,
+      titleTextStyle: Theme.of(context).primaryTextTheme.headline6,
+      actionsIconTheme: Theme.of(context).primaryIconTheme,
+      leading: titleIcon,
+      title: Text(
+        titleText,
       ),
-      direction: 'down',
+      actions: <Widget>[
+        Visibility(
+          child: IconButton(
+            icon: Icon(Icons.view_list),
+            onPressed: () => NotesScreen.of(context).changeView(false),
+          ),
+          visible: NotesScreen.of(context).notesListViewStatus == true ? true : false,
+        ),
+        Visibility(
+            child: IconButton(
+              icon: Icon(Icons.grid_view),
+              onPressed: () => NotesScreen.of(context).changeView(true),
+            ),
+            visible: NotesScreen.of(context).notesListViewStatus == false ? true : false),
+      ],
     );
   }
 

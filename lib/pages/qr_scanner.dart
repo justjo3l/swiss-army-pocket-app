@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, annotate_overrides, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class QrScannerScreen extends StatefulWidget {

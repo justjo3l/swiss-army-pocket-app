@@ -91,6 +91,9 @@ class FeedbackScreenState extends State<FeedbackScreen> {
                     child: TextFormField(
                       decoration: const InputDecoration(
                         labelText: 'Your name',
+                        labelStyle: TextStyle(
+                          fontSize: 25,
+                        ),
                       ),
                       validator: (text) {
                         text!.isEmpty ? 'Name is required!' : null;
@@ -98,6 +101,9 @@ class FeedbackScreenState extends State<FeedbackScreen> {
                       onSaved: (String? value) {
                         feedbackUserName = value as String;
                       },
+                      style: TextStyle(
+                        fontSize: 35,
+                      ),
                     ),
                     margin: EdgeInsets.all(25.0),
                   ),
@@ -105,6 +111,9 @@ class FeedbackScreenState extends State<FeedbackScreen> {
                     child: TextFormField(
                       decoration: const InputDecoration(
                         labelText: 'Your Feedback/Tip',
+                        labelStyle: TextStyle(
+                          fontSize: 25,
+                        ),
                       ),
                       validator: (text) {
                         text!.isEmpty ? 'Feedback/Tip is required!' : null;
@@ -112,13 +121,33 @@ class FeedbackScreenState extends State<FeedbackScreen> {
                       onSaved: (String? value) {
                         feedback = value as String;
                       },
+                      style: TextStyle(
+                        fontSize: 35,
+                      ),
                     ),
                     margin: EdgeInsets.all(25.0),
                   ),
                   Container(
                     child: ElevatedButton(
                       onPressed: feedbackButtonClicked,
-                      child: Text('Send'),
+                      child: Text(
+                        'Send',
+                        style: TextStyle(
+                          fontSize: 30,
+                        ),
+                      ),
+                      style: ButtonStyle(
+                          // minimumSize: MaterialStateProperty.all(
+                          //   Size(150, 60),
+                          // ),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(15.0),
+                              ),
+                            ),
+                          ),
+                          padding: MaterialStateProperty.all(EdgeInsets.fromLTRB(30, 10, 30, 10))),
                     ),
                     margin: EdgeInsets.only(top: 100.0),
                   ),

@@ -16,19 +16,15 @@ class CalculateAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FadeAnimation(
-      delay: 0,
-      child: AppBar(
-        centerTitle: true,
-        iconTheme: Theme.of(context).primaryIconTheme,
-        titleTextStyle: Theme.of(context).primaryTextTheme.headline6,
-        actionsIconTheme: Theme.of(context).primaryIconTheme,
-        leading: titleIcon,
-        title: Text(
-          titleText,
-        ),
+    return AppBar(
+      centerTitle: true,
+      iconTheme: Theme.of(context).primaryIconTheme,
+      titleTextStyle: Theme.of(context).primaryTextTheme.headline6,
+      actionsIconTheme: Theme.of(context).primaryIconTheme,
+      leading: titleIcon,
+      title: Text(
+        titleText,
       ),
-      direction: 'down',
     );
   }
 
