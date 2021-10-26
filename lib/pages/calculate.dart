@@ -94,7 +94,7 @@ class CalculateScreenState extends State<CalculateScreen> {
               ),
             ),
             Expanded(
-              child: Spacer(),
+              child: Divider(),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

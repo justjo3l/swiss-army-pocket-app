@@ -23,7 +23,11 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         iconTheme: Theme.of(context).primaryIconTheme,
         titleTextStyle: Theme.of(context).primaryTextTheme.headline6,
         actionsIconTheme: Theme.of(context).primaryIconTheme,
-        leading: titleIcon,
+        leading: ImageIcon(
+          AssetImage('icons/knife_icon.png'),
+          color: Colors.white,
+          size: 1,
+        ),
         title: Text(
           titleText,
         ),

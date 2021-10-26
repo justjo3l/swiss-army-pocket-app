@@ -18,11 +18,12 @@ class HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: HomeAppBar(
-          titleText: 'Swiss Army Pocket App',
-          titleIcon: Icon(Icons.fireplace),
-        ),
-        body: MainNavigationRow(),
-        backgroundColor: Theme.of(context).canvasColor);
+      appBar: HomeAppBar(
+        titleText: 'Swiss Army Pocket App',
+        titleIcon: Icon(Icons.fireplace),
+      ),
+      body: MainNavigationRow(),
+      backgroundColor: Theme.of(context).canvasColor,
+    );
   }
 }
