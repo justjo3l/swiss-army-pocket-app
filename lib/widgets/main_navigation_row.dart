@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../pages/notes.dart';
 import '../pages/feedback.dart';
 import '../pages/calculate.dart';
+import '../pages/qr_scanner.dart';
 
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -47,6 +48,12 @@ class MainNavigationRow extends StatelessWidget {
 
   void _qrFunction(BuildContext context) {
     print('QR function');
+
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => QrScannerScreen(),
+      ),
+    );
   }
 
   Widget build(BuildContext context) {
