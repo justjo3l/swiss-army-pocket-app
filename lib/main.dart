@@ -16,6 +16,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../data/note.dart';
 
+import 'data/user_simple_preferences.dart';
+
 class MainApp extends StatefulWidget {
   MainAppState createState() => MainAppState();
 
@@ -24,6 +26,18 @@ class MainApp extends StatefulWidget {
 
 class MainAppState extends State<MainApp> {
   ThemeMode _themeMode = ThemeMode.system;
+
+  @override
+  void initState() {
+    super.initState();
+    if (UserSimplePreferences.getTheme() == 'ThemeMode.light') {
+      _themeMode = ThemeMode.light;
+    } else if (UserSimplePreferences.getTheme() == 'ThemeMode.dark') {
+      _themeMode = ThemeMode.dark;
+    } else {
+      _themeMode = ThemeMode.system;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +50,8 @@ class MainAppState extends State<MainApp> {
     );
   }
 
-  void changeTheme(ThemeMode themeMode) {
+  Future<void> changeTheme(ThemeMode themeMode) async {
+    await UserSimplePreferences.setTheme(themeMode);
     setState(() {
       _themeMode = themeMode;
     });
@@ -51,6 +66,8 @@ Future main() async {
   await Hive.initFlutter(directory.path);
 
   Hive.registerAdapter(NoteAdapter());
+
+  await UserSimplePreferences.init();
 
   runApp(MainApp());
 }
