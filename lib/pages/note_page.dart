@@ -132,8 +132,23 @@ class _NotePageScreenState extends State<NotePageScreen> {
               IconButton(
                 icon: Icon(Icons.delete),
                 onPressed: () {
-                  deleteNote(note);
-                  Navigator.of(context).pop();
+                  showDialog<String>(
+                    builder: (BuildContext context) => AlertDialog(
+                      title: Text(
+                        'Are you sure you want to delete ${note.noteTitle}?',
+                        textAlign: TextAlign.center,
+                      ),
+                      content: ElevatedButton(
+                        child: Text('Delete'),
+                        onPressed: () {
+                          deleteNote(note);
+                          Navigator.of(context).pop();
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ),
+                    context: context,
+                  );
                 },
               ),
               Visibility(

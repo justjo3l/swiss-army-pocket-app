@@ -55,6 +55,9 @@ class NoteFormState extends State<NoteForm> {
               decoration: InputDecoration(
                 labelText: 'Note Title *',
                 errorText: noteTitleErrorText,
+                labelStyle: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
@@ -71,6 +74,8 @@ class NoteFormState extends State<NoteForm> {
               decoration: const InputDecoration(
                 labelText: 'Note Description',
               ),
+              minLines: 4,
+              maxLines: 10,
               onSaved: (String? value) {
                 formDescription = value as String;
               },
