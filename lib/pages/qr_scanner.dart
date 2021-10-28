@@ -17,13 +17,13 @@ class QrScannerScreenState extends State<QrScannerScreen> {
               Text(
                 'This doesn\'t work just yet!',
                 style: TextStyle(
-                  fontSize: 30,
+                  fontSize: 20,
                 ),
               ),
               Text(
                 'Give us a bit!',
                 style: TextStyle(
-                  fontSize: 30,
+                  fontSize: 20,
                 ),
               ),
               IconButton(
