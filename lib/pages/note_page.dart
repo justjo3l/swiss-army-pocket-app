@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../data/note.dart';
 
+import '../main.dart';
+
 class NotePageScreen extends StatefulWidget {
   final Note note;
   final int numOfNotes;
@@ -27,6 +29,8 @@ class _NotePageScreenState extends State<NotePageScreen> {
 
   bool titleFillStatus = false;
   bool descriptionFillStatus = false;
+
+  Color titleColor = Colors.white;
 
   late String newNoteTitle;
   late String newNoteDescription;
@@ -69,10 +73,14 @@ class _NotePageScreenState extends State<NotePageScreen> {
     note.noteDescription = newNoteDescription;
     note.save();
     saveNotRequired();
-    setState(() {
-      titleFillStatus = false;
-      descriptionFillStatus = false;
-    });
+    setState(
+      () {
+        titleFillStatus = false;
+        descriptionFillStatus = false;
+        FocusScope.of(context).unfocus();
+        titleColor = Theme.of(context).primaryTextTheme.headline6!.color as Color;
+      },
+    );
   }
 
   Future deleteNote(Note note) async {
@@ -82,91 +90,109 @@ class _NotePageScreenState extends State<NotePageScreen> {
   @override
   Widget build(BuildContext context) {
     return Hero(
-      child: Scaffold(
-        appBar: AppBar(
-          title: TextFormField(
-            onChanged: (text) {
-              if (text != note.noteTitle) {
-                saveRequired();
-              } else {
-                saveNotRequired();
-              }
-            },
-            onTap: () {
-              setState(() {
-                titleFillStatus = true;
-              });
-            },
-            controller: noteTitleController,
-            cursorHeight: 1,
-            cursorWidth: 1,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderSide: BorderSide.none,
-              ),
-              filled: titleFillStatus,
-              fillColor: Colors.white,
-              constraints: BoxConstraints(
-                maxHeight: 30,
-                maxWidth: 400,
-              ),
-            ),
-          ),
-          centerTitle: true,
-          actions: [
-            IconButton(
-              icon: Icon(Icons.delete),
-              onPressed: () {
-                deleteNote(note);
-                Navigator.of(context).pop();
+      child: GestureDetector(
+        child: Scaffold(
+          appBar: AppBar(
+            title: TextFormField(
+              onChanged: (text) {
+                if (text != note.noteTitle) {
+                  saveRequired();
+                } else {
+                  saveNotRequired();
+                }
               },
+              onTap: () {
+                setState(() {
+                  titleFillStatus = true;
+                  titleColor = Theme.of(context).primaryTextTheme.headline4!.color as Color;
+                });
+              },
+              controller: noteTitleController,
+              cursorHeight: 1,
+              cursorWidth: 1,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                ),
+                filled: titleFillStatus,
+                fillColor: Colors.white,
+                constraints: BoxConstraints(
+                  maxHeight: 30,
+                  maxWidth: 400,
+                ),
+              ),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: titleColor,
+              ),
+              textAlign: TextAlign.center,
             ),
-            Visibility(
-              child: IconButton(
-                icon: Icon(Icons.save),
+            centerTitle: true,
+            actions: [
+              IconButton(
+                icon: Icon(Icons.delete),
                 onPressed: () {
-                  newNoteTitle = noteTitleController.text;
-                  newNoteDescription = noteDescriptionController.text;
-                  editNote(note, newNoteTitle, newNoteDescription);
+                  deleteNote(note);
+                  Navigator.of(context).pop();
                 },
               ),
-              visible: saveOptionShown,
-            )
-          ],
-        ),
-        body: Container(
-          child: TextFormField(
-            onChanged: (text) {
-              if (text != note.noteDescription) {
-                saveRequired();
-              } else {
-                saveNotRequired();
-              }
-            },
-            onTap: () {
-              setState(() {
-                descriptionFillStatus = true;
-              });
-            },
-            controller: noteDescriptionController,
-            cursorHeight: 1,
-            cursorWidth: 1,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderSide: BorderSide.none,
+              Visibility(
+                child: IconButton(
+                  icon: Icon(Icons.save),
+                  onPressed: () {
+                    newNoteTitle = noteTitleController.text;
+                    newNoteDescription = noteDescriptionController.text;
+                    editNote(note, newNoteTitle, newNoteDescription);
+                  },
+                ),
+                visible: saveOptionShown,
+              )
+            ],
+          ),
+          body: Container(
+            child: TextFormField(
+              onChanged: (text) {
+                if (text != note.noteDescription) {
+                  saveRequired();
+                } else {
+                  saveNotRequired();
+                }
+              },
+              onTap: () {
+                setState(() {
+                  descriptionFillStatus = true;
+                });
+              },
+              controller: noteDescriptionController,
+              cursorHeight: 1,
+              cursorWidth: 1,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                ),
+                filled: descriptionFillStatus,
+                fillColor: Colors.white,
               ),
-              filled: descriptionFillStatus,
-              fillColor: Colors.white,
+              minLines: 10,
+              maxLines: 20,
             ),
-            minLines: 10,
-            maxLines: 20,
-          ),
-          margin: EdgeInsets.all(10.0),
-          padding: EdgeInsets.only(
-            top: 10.0,
-            left: 10.0,
+            margin: EdgeInsets.all(10.0),
+            padding: EdgeInsets.only(
+              top: 10.0,
+              left: 10.0,
+            ),
           ),
         ),
+        onTap: () {
+          setState(
+            () {
+              titleFillStatus = false;
+              descriptionFillStatus = false;
+              titleColor = Theme.of(context).primaryTextTheme.headline6!.color as Color;
+              FocusScope.of(context).unfocus();
+            },
+          );
+        },
       ),
       tag: note.noteTitle,
     );

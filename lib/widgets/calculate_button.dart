@@ -34,12 +34,15 @@ class CalculateButton extends StatelessWidget {
         onPressed: () {
           CalculateScreen.of(context).buttonPressed(buttonText);
         },
-        child: Text(
-          buttonText,
-          style: TextStyle(
-            fontSize: 32.0,
-            color: Theme.of(context).primaryTextTheme.headline6!.color,
+        child: FittedBox(
+          child: Text(
+            buttonText,
+            style: TextStyle(
+              fontSize: 30.0,
+              color: Theme.of(context).primaryTextTheme.headline6!.color,
+            ),
           ),
+          fit: BoxFit.fitWidth,
         ),
       ),
     );

@@ -46,6 +46,9 @@ class AppTheme {
         headline6: TextStyle(
           color: Colors.white,
         ),
+        headline4: TextStyle(
+          color: Colors.black,
+        ),
         headline5: TextStyle(
           color: Colors.black,
         ),
@@ -74,6 +77,9 @@ class AppTheme {
       primaryTextTheme: TextTheme(
         headline6: TextStyle(
           color: Colors.white,
+        ),
+        headline4: TextStyle(
+          color: Colors.black,
         ),
         headline5: TextStyle(
           color: Colors.white,
