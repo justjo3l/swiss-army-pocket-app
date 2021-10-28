@@ -171,7 +171,7 @@ class MainNavigationRow extends StatelessWidget {
                     ),
                   ),
                 ),
-                direction: 'down',
+                direction: 'up',
               ),
             ],
             mainAxisAlignment: MainAxisAlignment.center,
