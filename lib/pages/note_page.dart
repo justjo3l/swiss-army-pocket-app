@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../data/note.dart';
 
-import '../main.dart';
-
 class NotePageScreen extends StatefulWidget {
   final Note note;
   final int numOfNotes;
