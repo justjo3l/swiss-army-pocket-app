@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 //import './data/custom_scroll_physics.dart';
 
@@ -34,6 +34,7 @@ class NotesListViewState extends State<NotesListView> {
               return NoteListTile(
                 note: notesList[index],
                 numOfNotes: notesList.length,
+                descriptionColor: Theme.of(context).brightness == Brightness.light ? Colors.black : Colors.white,
               );
             });
       },

@@ -7,17 +7,20 @@ import '../data/note.dart';
 class NotePageScreen extends StatefulWidget {
   final Note note;
   final int numOfNotes;
+  final Color descriptionColor;
 
   const NotePageScreen({
     Key? key,
     required Note this.note,
     required int this.numOfNotes,
+    required Color this.descriptionColor,
   }) : super(key: key);
 
   @override
   _NotePageScreenState createState() => _NotePageScreenState(
         note: note,
         numOfNotes: numOfNotes,
+        descriptionColor: descriptionColor,
       );
 }
 
@@ -29,6 +32,7 @@ class _NotePageScreenState extends State<NotePageScreen> {
   bool descriptionFillStatus = false;
 
   Color titleColor = Colors.white;
+  Color descriptionColor;
 
   late String newNoteTitle;
   late String newNoteDescription;
@@ -52,6 +56,7 @@ class _NotePageScreenState extends State<NotePageScreen> {
   _NotePageScreenState({
     required this.note,
     required this.numOfNotes,
+    required this.descriptionColor,
   });
 
   Future saveRequired() async {
@@ -77,6 +82,7 @@ class _NotePageScreenState extends State<NotePageScreen> {
         descriptionFillStatus = false;
         FocusScope.of(context).unfocus();
         titleColor = Theme.of(context).primaryTextTheme.headline6!.color as Color;
+        descriptionColor = Theme.of(context).brightness == Brightness.light ? Colors.black : Colors.white;
       },
     );
   }
@@ -174,6 +180,7 @@ class _NotePageScreenState extends State<NotePageScreen> {
               onTap: () {
                 setState(() {
                   descriptionFillStatus = true;
+                  descriptionColor = Colors.black;
                 });
               },
               controller: noteDescriptionController,
@@ -188,6 +195,9 @@ class _NotePageScreenState extends State<NotePageScreen> {
               ),
               minLines: 10,
               maxLines: 20,
+              style: TextStyle(
+                color: descriptionColor,
+              ),
             ),
             margin: EdgeInsets.all(10.0),
             padding: EdgeInsets.only(
@@ -202,6 +212,7 @@ class _NotePageScreenState extends State<NotePageScreen> {
               titleFillStatus = false;
               descriptionFillStatus = false;
               titleColor = Theme.of(context).primaryTextTheme.headline6!.color as Color;
+              descriptionColor = Theme.of(context).brightness == Brightness.light ? Colors.black : Colors.white;
               FocusScope.of(context).unfocus();
             },
           );

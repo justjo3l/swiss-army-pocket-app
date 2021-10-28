@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 //import './data/custom_scroll_physics.dart';
 
@@ -36,6 +36,7 @@ class NotesGridViewState extends State<NotesGridView> {
               return NoteGridTile(
                 note: notesList[index],
                 numOfNotes: notesList.length,
+                descriptionColor: Theme.of(context).brightness == Brightness.light ? Colors.black : Colors.white,
               );
             });
       },

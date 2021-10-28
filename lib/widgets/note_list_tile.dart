@@ -10,6 +10,7 @@ import '../data/note.dart';
 class NoteListTile extends StatelessWidget {
   final Note note;
   final int numOfNotes;
+  final Color descriptionColor;
 
   void noteClick(BuildContext context) {
     Navigator.of(context).push(
@@ -17,6 +18,7 @@ class NoteListTile extends StatelessWidget {
         builder: (context) => NotePageScreen(
           note: note,
           numOfNotes: numOfNotes,
+          descriptionColor: descriptionColor,
         ),
       ),
     );
@@ -25,6 +27,7 @@ class NoteListTile extends StatelessWidget {
   NoteListTile({
     required this.note,
     required this.numOfNotes,
+    required this.descriptionColor,
   });
 
   @override
