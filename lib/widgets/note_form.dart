@@ -74,8 +74,8 @@ class NoteFormState extends State<NoteForm> {
               decoration: const InputDecoration(
                 labelText: 'Note Description',
               ),
-              minLines: 4,
-              maxLines: 10,
+              minLines: 2,
+              maxLines: 2,
               onSaved: (String? value) {
                 formDescription = value as String;
               },
@@ -85,7 +85,7 @@ class NoteFormState extends State<NoteForm> {
               child: Text('Create'),
             ),
           ],
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         ),
       ),
       width: MediaQuery.of(context).size.width * 0.8,

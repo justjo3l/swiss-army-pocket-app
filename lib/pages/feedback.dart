@@ -105,7 +105,7 @@ class FeedbackScreenState extends State<FeedbackScreen> {
                         fontSize: 35,
                       ),
                     ),
-                    margin: EdgeInsets.all(25.0),
+                    margin: EdgeInsets.all(10.0),
                   ),
                   Container(
                     child: TextFormField(
@@ -125,7 +125,7 @@ class FeedbackScreenState extends State<FeedbackScreen> {
                         fontSize: 35,
                       ),
                     ),
-                    margin: EdgeInsets.all(25.0),
+                    margin: EdgeInsets.all(10.0),
                   ),
                   Container(
                     child: ElevatedButton(
@@ -149,7 +149,7 @@ class FeedbackScreenState extends State<FeedbackScreen> {
                           ),
                           padding: MaterialStateProperty.all(EdgeInsets.fromLTRB(30, 10, 30, 10))),
                     ),
-                    margin: EdgeInsets.only(top: 100.0),
+                    margin: EdgeInsets.only(top: 30.0),
                   ),
                 ],
                 mainAxisAlignment: MainAxisAlignment.center,

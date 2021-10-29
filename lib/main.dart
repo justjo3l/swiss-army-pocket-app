@@ -47,6 +47,7 @@ class MainAppState extends State<MainApp> {
       theme: AppTheme.getLightTheme(),
       darkTheme: AppTheme.getDarkTheme(),
       themeMode: _themeMode,
+      debugShowCheckedModeBanner: false,
     );
   }
 
