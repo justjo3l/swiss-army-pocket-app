@@ -1,51 +1,85 @@
 // ignore_for_file: use_key_in_widget_constructors, annotate_overrides, prefer_const_constructors
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+
+import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class QrScannerScreen extends StatefulWidget {
   QrScannerScreenState createState() => QrScannerScreenState();
 }
 
 class QrScannerScreenState extends State<QrScannerScreen> {
+  final qrKey = GlobalKey(debugLabel: 'QR');
+
+  Barcode? barcode;
+  QRViewController? controller;
+
+  @override
+  void dispose() {
+    controller?.dispose();
+    super.dispose();
+  }
+
+  @override
+  void reassemble() async {
+    super.reassemble();
+
+    if (Platform.isAndroid) {
+      await controller!.pauseCamera();
+    }
+    controller!.resumeCamera();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      child: Scaffold(
-        body: Align(
-          child: Column(
-            children: [
-              Text(
-                'This doesn\'t work just yet!',
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-              Text(
-                'Give us a bit!',
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-              IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: Icon(Icons.arrow_back),
-                color: Theme.of(context).primaryColor,
-                iconSize: 30,
-              ),
-            ],
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-          ),
-          alignment: Alignment.center,
-        ),
+    return Scaffold(
+      body: Stack(
+        alignment: Alignment.center,
+        children: [
+          buildQrView(context),
+          Positioned(
+            child: buildResult(),
+            bottom: 20,
+          )
+        ],
       ),
-      onPanUpdate: (gestureDetails) {
-        if (gestureDetails.delta.dy > 5) {
-          Navigator.of(context).pop();
-        }
-      },
+    );
+  }
+
+  Widget buildResult() => Container(
+        child: Text(barcode != null ? 'Result: ${barcode!.code}' : 'Scan a Code!',
+            maxLines: 3,
+            style: TextStyle(
+              color: Theme.of(context).primaryTextTheme.headline6!.color,
+            )),
+        decoration: BoxDecoration(
+          color: Theme.of(context).primaryColor,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        padding: EdgeInsets.all(
+          10,
+        ),
+      );
+
+  Widget buildQrView(BuildContext context) => QRView(
+        key: qrKey,
+        onQRViewCreated: onQRViewCreated,
+        overlay: QrScannerOverlayShape(
+          borderColor: Theme.of(context).primaryColor,
+          cutOutSize: MediaQuery.of(context).size.width * 0.8,
+          borderWidth: 5,
+          borderRadius: 20,
+          borderLength: 40,
+        ),
+      );
+
+  void onQRViewCreated(QRViewController controller) {
+    setState(() => this.controller = controller);
+
+    controller.scannedDataStream.listen(
+      (barcode) => setState(() => this.barcode = barcode),
     );
   }
 }
