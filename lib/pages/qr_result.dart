@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import, prefer_const_constructors, unused_local_variable, prefer_const_declarations
+// ignore_for_file: unused_import, prefer_const_constructors, unused_local_variable, prefer_const_declarations, prefer_typing_uninitialized_variables, no_logic_in_create_state
 
 import 'package:flutter/material.dart';
 

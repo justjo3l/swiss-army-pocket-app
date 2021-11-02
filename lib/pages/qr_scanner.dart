@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, annotate_overrides, prefer_const_constructors
+// ignore_for_file: use_key_in_widget_constructors, annotate_overrides, prefer_const_constructors, unnecessary_null_comparison
 
 import 'dart:io';
 
