@@ -5,9 +5,14 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:swiss_army_pocket_app/pages/qr_result.dart';
+
+import 'qr_result.dart';
 
 class QrScannerScreen extends StatefulWidget {
   QrScannerScreenState createState() => QrScannerScreenState();
+
+  static QrScannerScreenState of(BuildContext context) => context.findAncestorStateOfType<QrScannerScreenState>() as QrScannerScreenState;
 }
 
 class QrScannerScreenState extends State<QrScannerScreen> {
@@ -32,6 +37,10 @@ class QrScannerScreenState extends State<QrScannerScreen> {
     controller!.resumeCamera();
   }
 
+  void resetCamera() async {
+    controller!.resumeCamera();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,29 +48,10 @@ class QrScannerScreenState extends State<QrScannerScreen> {
         alignment: Alignment.center,
         children: [
           buildQrView(context),
-          Positioned(
-            child: buildResult(),
-            bottom: 20,
-          )
         ],
       ),
     );
   }
-
-  Widget buildResult() => Container(
-        child: Text(barcode != null ? 'Result: ${barcode!.code}' : 'Scan a Code!',
-            maxLines: 3,
-            style: TextStyle(
-              color: Theme.of(context).primaryTextTheme.headline6!.color,
-            )),
-        decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
-          borderRadius: BorderRadius.circular(16),
-        ),
-        padding: EdgeInsets.all(
-          10,
-        ),
-      );
 
   Widget buildQrView(BuildContext context) => QRView(
         key: qrKey,
@@ -79,7 +69,16 @@ class QrScannerScreenState extends State<QrScannerScreen> {
     setState(() => this.controller = controller);
 
     controller.scannedDataStream.listen(
-      (barcode) => setState(() => this.barcode = barcode),
+      (barcode) {
+        if (barcode != null) {
+          controller.stopCamera();
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => QrResultScreen(qrCodeResult: barcode.code),
+            ),
+          );
+        }
+      },
     );
   }
 }
