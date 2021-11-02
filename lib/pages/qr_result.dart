@@ -13,6 +13,9 @@ import 'package:http/http.dart' as http;
 
 import 'notes.dart';
 
+import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 class QrResultScreen extends StatefulWidget {
   final qrCodeResult;
 
@@ -42,14 +45,30 @@ class QrResultScreenState extends State<QrResultScreen> {
         body: Column(
           children: [
             Container(
-              child: Text(
-                qrCodeResult,
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
+              child: Uri.parse(qrCodeResult).isAbsolute
+                  ? Linkify(
+                      text: qrCodeResult,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      onOpen: (url) async {
+                        if (await canLaunch(url.toString())) {
+                          await launch(url.toString());
+                        } else {
+                          throw 'Could not launch $url';
+                        }
+                      },
+                    )
+                  : Text(
+                      qrCodeResult,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
               alignment: Alignment.center,
             ),
           ],
