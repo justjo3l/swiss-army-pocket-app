@@ -50,14 +50,15 @@ class QrResultScreenState extends State<QrResultScreen> {
                       target: LinkTarget.blank,
                       uri: Uri.parse(qrCodeResult),
                       builder: (context, followlink) => GestureDetector(
-                        child: SelectableText(
+                        child: Text(
                           qrCodeResult,
                           style: TextStyle(
-                            fontSize: 40,
+                            fontSize: 30,
                             fontWeight: FontWeight.bold,
                             decoration: TextDecoration.underline,
                             color: Colors.blue,
                           ),
+                          textAlign: TextAlign.center,
                         ),
                         onTap: followlink,
                       ),
