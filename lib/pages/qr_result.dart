@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import, prefer_const_constructors, unused_local_variable, prefer_const_declarations, prefer_typing_uninitialized_variables, no_logic_in_create_state
 
 import 'package:flutter/material.dart';
+import 'package:url_launcher/link.dart';
 
 import '../widgets/qr_result_app_bar.dart';
 import '../widgets/main_navigation_row.dart';
@@ -46,20 +47,21 @@ class QrResultScreenState extends State<QrResultScreen> {
           children: [
             Container(
               child: Uri.parse(qrCodeResult).isAbsolute
-                  ? Linkify(
-                      text: qrCodeResult,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
+                  ? Link(
+                      target: LinkTarget.blank,
+                      uri: Uri.parse(qrCodeResult),
+                      builder: (context, followlink) => GestureDetector(
+                        child: Text(
+                          qrCodeResult,
+                          style: TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.underline,
+                            color: Colors.blue,
+                          ),
+                        ),
+                        onTap: followlink,
                       ),
-                      onOpen: (url) async {
-                        if (await canLaunch(url.toString())) {
-                          await launch(url.toString());
-                        } else {
-                          throw 'Could not launch $url';
-                        }
-                      },
                     )
                   : Text(
                       qrCodeResult,
