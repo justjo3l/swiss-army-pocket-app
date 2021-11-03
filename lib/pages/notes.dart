@@ -9,7 +9,6 @@ import '../animations/fade_animation.dart';
 
 import '../main.dart';
 
-import '../data/note_list_data.dart';
 import '../data/note.dart';
 
 import 'package:flutter/services.dart';

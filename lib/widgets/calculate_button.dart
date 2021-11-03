@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_const_constructors
+// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_const_constructors, sized_box_for_whitespace
 
 import 'package:flutter/cupertino.dart';
 
@@ -9,19 +9,20 @@ import '../pages/calculate.dart';
 class CalculateButton extends StatelessWidget {
   CalculateButton({
     required this.buttonText,
+    this.borderRadius,
   });
 
   String buttonText;
+  double? borderRadius;
   @override
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height * 0.1,
-      color: Theme.of(context).primaryColor,
       child: ElevatedButton(
         style: ButtonStyle(
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5.0),
+              borderRadius: BorderRadius.circular(borderRadius == null ? 5.0 : borderRadius as double),
               side: BorderSide(
                 width: 0.3,
                 style: BorderStyle.solid,
@@ -29,6 +30,7 @@ class CalculateButton extends StatelessWidget {
               ),
             ),
           ),
+          backgroundColor: MaterialStateProperty.all(Theme.of(context).primaryColor),
           padding: MaterialStateProperty.all(EdgeInsets.all(15.0)),
         ),
         onPressed: () {

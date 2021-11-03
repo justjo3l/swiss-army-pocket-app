@@ -24,6 +24,8 @@ class CalculateScreenState extends State<CalculateScreen> {
   double equationFontSize = 48.0;
   double resultFontSize = 48.0;
 
+  bool backspaceButtonStatus = false;
+
   void buttonPressed(String buttonText) {
     setState(() {
       if (buttonText == 'C') {
@@ -31,19 +33,21 @@ class CalculateScreenState extends State<CalculateScreen> {
         result = '';
         equationFontSize = 48.0;
         resultFontSize = 38.0;
+        backspaceButtonStatus = false;
       } else if (buttonText == '<') {
         equationFontSize = 48.0;
         resultFontSize = 38.0;
         equation = equation.substring(0, equation.length - 1);
         if (equation == '') {
           equation = '0';
+          backspaceButtonStatus = false;
         }
       } else if (buttonText == '=') {
         equationFontSize = 38.0;
         resultFontSize = 48.0;
         expression = equation;
         expression = expression.replaceAll('x', '*');
-        expression = expression.replaceAll('/', '/');
+        expression = expression.replaceAll('÷', '/');
         if (equation.startsWith('0')) {
           equation = equation.substring(equation.lastIndexOf('0') + 1, equation.length);
         }
@@ -59,6 +63,7 @@ class CalculateScreenState extends State<CalculateScreen> {
       } else {
         equationFontSize = 48.0;
         resultFontSize = 38.0;
+        backspaceButtonStatus = true;
         if (equation == '0') {
           equation = '';
         }
@@ -77,18 +82,38 @@ class CalculateScreenState extends State<CalculateScreen> {
         ),
         body: Column(
           children: [
-            Container(
-              alignment: Alignment.centerRight,
-              padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
-              child: Text(
-                equation,
-                style: TextStyle(fontSize: equationFontSize),
-              ),
+            Row(
+              children: [
+                Visibility(
+                  child: Container(
+                    child: CalculateButton(
+                      buttonText: '<',
+                      borderRadius: 30.0,
+                    ),
+                    padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
+                  ),
+                  visible: backspaceButtonStatus,
+                ),
+                Flexible(
+                  child: Container(
+                    alignment: Alignment.centerRight,
+                    padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
+                    child: FittedBox(
+                      child: Text(
+                        equation,
+                        style: TextStyle(fontSize: equationFontSize),
+                      ),
+                      fit: BoxFit.fitWidth,
+                    ),
+                  ),
+                ),
+              ],
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
             ),
             Container(
               alignment: Alignment.centerRight,
               padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
-              child: Text(
+              child: SelectableText(
                 result,
                 style: TextStyle(fontSize: resultFontSize),
               ),
@@ -109,10 +134,10 @@ class CalculateScreenState extends State<CalculateScreen> {
                             buttonText: 'C',
                           ),
                           CalculateButton(
-                            buttonText: '<',
+                            buttonText: '(',
                           ),
                           CalculateButton(
-                            buttonText: '/',
+                            buttonText: ')',
                           ),
                         ],
                       ),
@@ -164,7 +189,7 @@ class CalculateScreenState extends State<CalculateScreen> {
                             buttonText: '0',
                           ),
                           CalculateButton(
-                            buttonText: '00',
+                            buttonText: '=',
                           ),
                         ],
                       ),
@@ -178,7 +203,21 @@ class CalculateScreenState extends State<CalculateScreen> {
                       TableRow(
                         children: [
                           CalculateButton(
-                            buttonText: '*',
+                            buttonText: '^',
+                          ),
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          CalculateButton(
+                            buttonText: '÷',
+                          ),
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          CalculateButton(
+                            buttonText: 'x',
                           ),
                         ],
                       ),
@@ -196,20 +235,6 @@ class CalculateScreenState extends State<CalculateScreen> {
                           ),
                         ],
                       ),
-                      TableRow(
-                        children: [
-                          CalculateButton(
-                            buttonText: '/',
-                          ),
-                        ],
-                      ),
-                      TableRow(
-                        children: [
-                          CalculateButton(
-                            buttonText: '=',
-                          ),
-                        ],
-                      ),
                     ],
                   ),
                 ),
@@ -222,6 +247,13 @@ class CalculateScreenState extends State<CalculateScreen> {
         if (gestureDetails.delta.dy > 5) {
           Navigator.of(context).pop();
         }
+      },
+      onTap: () {
+        setState(
+          () {
+            FocusScope.of(context).unfocus();
+          },
+        );
       },
     );
   }

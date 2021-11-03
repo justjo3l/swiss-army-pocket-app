@@ -50,7 +50,7 @@ class QrResultScreenState extends State<QrResultScreen> {
                       target: LinkTarget.blank,
                       uri: Uri.parse(qrCodeResult),
                       builder: (context, followlink) => GestureDetector(
-                        child: Text(
+                        child: SelectableText(
                           qrCodeResult,
                           style: TextStyle(
                             fontSize: 40,
@@ -62,7 +62,7 @@ class QrResultScreenState extends State<QrResultScreen> {
                         onTap: followlink,
                       ),
                     )
-                  : Text(
+                  : SelectableText(
                       qrCodeResult,
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -86,6 +86,13 @@ class QrResultScreenState extends State<QrResultScreen> {
             ),
           );
         }
+      },
+      onTap: () {
+        setState(
+          () {
+            FocusScope.of(context).unfocus();
+          },
+        );
       },
     );
   }
