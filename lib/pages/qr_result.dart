@@ -14,7 +14,6 @@ import 'package:http/http.dart' as http;
 
 import 'notes.dart';
 
-import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class QrResultScreen extends StatefulWidget {
