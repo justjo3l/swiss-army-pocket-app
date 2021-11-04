@@ -5,6 +5,8 @@ import '../pages/notes.dart';
 import '../pages/feedback.dart';
 import '../pages/calculate.dart';
 import '../pages/qr_scanner.dart';
+import '../pages/music_player.dart';
+import '../pages/compass.dart';
 
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -49,11 +51,19 @@ class MainNavigationRow extends StatelessWidget {
   }
 
   void _musicFunction(BuildContext context) {
-    print('Music function');
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => MusicPlayerScreen(),
+      ),
+    );
   }
 
   void _compassFunction(BuildContext context) {
-    print('Compass function');
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => CompassScreen(),
+      ),
+    );
   }
 
   Widget build(BuildContext context) {
