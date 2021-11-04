@@ -17,8 +17,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../data/boxes.dart';
 
-import '../widgets/note_form.dart';
-
 class NotesScreen extends StatefulWidget {
   const NotesScreen({Key? key}) : super(key: key);
 
@@ -40,12 +38,12 @@ class _NotesScreenState extends State<NotesScreen> {
     super.dispose();
   }
 
-  Future addNote(int index, String title, String description, String color) async {
+  Future addNote() async {
     final note = Note(
-      noteIndex: index,
-      noteTitle: title,
-      noteDescription: description,
-      noteColor: color,
+      noteIndex: Boxes.getNotes().length,
+      noteTitle: 'Note #${Boxes.getNotes().length + 1}',
+      noteDescription: '',
+      noteColor: 'Transperent',
       createdTime: DateTime.now(),
     );
 
@@ -93,16 +91,7 @@ class _NotesScreenState extends State<NotesScreen> {
             Align(
               child: Container(
                 child: RawMaterialButton(
-                  onPressed: () => showDialog<String>(
-                    context: context,
-                    builder: (BuildContext context) => AlertDialog(
-                      title: Text(
-                        'Create a new Note',
-                        textAlign: TextAlign.center,
-                      ),
-                      content: NoteForm(),
-                    ),
-                  ),
+                  onPressed: addNote,
                   child: Icon(
                     Icons.add,
                     color: Colors.white,
