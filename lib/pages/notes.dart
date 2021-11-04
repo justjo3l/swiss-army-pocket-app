@@ -76,9 +76,18 @@ class _NotesScreenState extends State<NotesScreen> {
                     return notesListViewStatus
                         ? ConstrainedBox(
                             child: (notesList.isNotEmpty || notesListFlag) ? NotesListView() : Text('No Notes yet :('),
-                            constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.45),
+                            constraints: BoxConstraints(
+                              maxHeight: MediaQuery.of(context).size.height * 0.45,
+                            ),
                           )
-                        : NotesGridView();
+                        : (notesList.isNotEmpty || notesListFlag)
+                            ? NotesGridView()
+                            : ConstrainedBox(
+                                child: Text('No Notes yet :('),
+                                constraints: BoxConstraints(
+                                  maxHeight: MediaQuery.of(context).size.height * 0.45,
+                                ),
+                              );
                   }),
             ),
             Align(
