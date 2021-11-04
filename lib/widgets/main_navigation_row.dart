@@ -75,7 +75,9 @@ class MainNavigationRow extends StatelessWidget {
                   ),
                   style: ButtonStyle(
                     alignment: Alignment.centerLeft,
-                    minimumSize: MaterialStateProperty.all(Size(80, 250)),
+                    minimumSize: MaterialStateProperty.all(
+                      Size(MediaQuery.of(context).size.width * 0.25, MediaQuery.of(context).size.height * 0.35),
+                    ),
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
@@ -103,8 +105,17 @@ class MainNavigationRow extends StatelessWidget {
                   ),
                   style: ButtonStyle(
                     alignment: Alignment.centerLeft,
-                    minimumSize: MaterialStateProperty.all(Size(100, 150)),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(50))),
+                    minimumSize: MaterialStateProperty.all(
+                      Size(
+                        MediaQuery.of(context).size.width * 0.20,
+                        MediaQuery.of(context).size.height * 0.220,
+                      ),
+                    ),
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                    ),
                   ),
                 ),
                 direction: 'down',
@@ -122,7 +133,12 @@ class MainNavigationRow extends StatelessWidget {
                   ),
                   style: ButtonStyle(
                     alignment: Alignment.centerRight,
-                    minimumSize: MaterialStateProperty.all(Size(80, 250)),
+                    minimumSize: MaterialStateProperty.all(
+                      Size(
+                        MediaQuery.of(context).size.width * 0.25,
+                        MediaQuery.of(context).size.height * 0.35,
+                      ),
+                    ),
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
@@ -158,7 +174,10 @@ class MainNavigationRow extends StatelessWidget {
                   ),
                   style: ButtonStyle(
                     alignment: Alignment.center,
-                    minimumSize: MaterialStateProperty.all(Size(250, 80)),
+                    minimumSize: MaterialStateProperty.all(Size(
+                      MediaQuery.of(context).size.height * 0.35,
+                      MediaQuery.of(context).size.width * 0.20,
+                    )),
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
