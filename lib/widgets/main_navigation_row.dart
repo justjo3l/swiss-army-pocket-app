@@ -15,8 +15,6 @@ import '../animations/fade_animation.dart';
 
 class MainNavigationRow extends StatelessWidget {
   Future _notesFunction(BuildContext context) async {
-    print('Notes function');
-
     await Hive.openBox<Note>('notes');
 
     Navigator.of(context).push(
@@ -26,9 +24,7 @@ class MainNavigationRow extends StatelessWidget {
     );
   }
 
-  void _centerFunction(BuildContext context) {
-    print('Center function');
-
+  void _feedbackFunction(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => FeedbackScreen(),
@@ -37,8 +33,6 @@ class MainNavigationRow extends StatelessWidget {
   }
 
   void _calculateFunction(BuildContext context) {
-    print('Calculate function');
-
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => CalculateScreen(),
@@ -47,8 +41,6 @@ class MainNavigationRow extends StatelessWidget {
   }
 
   void _qrFunction(BuildContext context) {
-    print('QR function');
-
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => QrScannerScreen(),
@@ -56,9 +48,92 @@ class MainNavigationRow extends StatelessWidget {
     );
   }
 
+  void _musicFunction(BuildContext context) {
+    print('Music function');
+  }
+
+  void _compassFunction(BuildContext context) {
+    print('Compass function');
+  }
+
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        Align(
+          child: Row(
+            children: [
+              //FEEDBACK BUTTON
+              FadeAnimation(
+                delay: 1.5,
+                child: ElevatedButton(
+                  onPressed: () {
+                    _feedbackFunction(context);
+                  },
+                  child: Icon(
+                    Icons.feedback,
+                    size: 60,
+                  ),
+                  style: ButtonStyle(
+                    alignment: Alignment.centerLeft,
+                    minimumSize: MaterialStateProperty.all(
+                      Size(
+                        MediaQuery.of(context).size.width * 0.25,
+                        MediaQuery.of(context).size.height * 0.15,
+                      ),
+                    ),
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.zero,
+                          bottomRight: Radius.circular(50),
+                          topLeft: Radius.zero,
+                          bottomLeft: Radius.zero,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                direction: 'down',
+              ),
+              //MUSIC BUTTON
+              FadeAnimation(
+                delay: 1.5,
+                child: ElevatedButton(
+                  onPressed: () {
+                    _musicFunction(context);
+                  },
+                  child: Icon(
+                    Icons.music_note,
+                    size: 60,
+                  ),
+                  style: ButtonStyle(
+                    alignment: Alignment.centerRight,
+                    minimumSize: MaterialStateProperty.all(
+                      Size(
+                        MediaQuery.of(context).size.width * 0.25,
+                        MediaQuery.of(context).size.height * 0.15,
+                      ),
+                    ),
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.zero,
+                          bottomRight: Radius.zero,
+                          topLeft: Radius.zero,
+                          bottomLeft: Radius.circular(50),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                direction: 'down',
+              ),
+            ],
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+          ),
+          alignment: Alignment.topLeft,
+        ),
         Center(
           child: Row(
             children: [
@@ -92,19 +167,19 @@ class MainNavigationRow extends StatelessWidget {
                 ),
                 direction: 'down',
               ),
-              //CENTER BUTTON
+              //COMPASS BUTTON
               FadeAnimation(
                 delay: 1.5,
                 child: ElevatedButton(
                   onPressed: () {
-                    _centerFunction(context);
+                    _compassFunction(context);
                   },
                   child: Icon(
-                    Icons.circle,
+                    Icons.gps_fixed,
                     size: 70,
                   ),
                   style: ButtonStyle(
-                    alignment: Alignment.centerLeft,
+                    alignment: Alignment.center,
                     minimumSize: MaterialStateProperty.all(
                       Size(
                         MediaQuery.of(context).size.width * 0.20,
