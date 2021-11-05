@@ -16,7 +16,6 @@ class HomeState extends State<Home> {
     return Scaffold(
       appBar: const HomeAppBar(
         titleText: 'Swiss Army Pocket App',
-        titleIcon: Icon(Icons.fireplace),
       ),
       body: const MainNavigationRow(),
       backgroundColor: Theme.of(context).canvasColor,

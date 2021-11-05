@@ -5,12 +5,10 @@ import '../animations/fade_animation.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String titleText;
-  final Icon titleIcon;
 
   const HomeAppBar({
     Key? key,
     required this.titleText,
-    required this.titleIcon,
   }) : super(key: key);
 
   @override
@@ -23,7 +21,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         titleTextStyle: Theme.of(context).primaryTextTheme.headline6,
         actionsIconTheme: Theme.of(context).primaryIconTheme,
         leading: const ImageIcon(
-          AssetImage('icons/knife_icon.png'),
+          AssetImage('assets/knife_icon.png'),
           color: Colors.white,
           size: 1,
         ),
