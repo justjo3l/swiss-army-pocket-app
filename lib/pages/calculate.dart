@@ -1,10 +1,7 @@
-// ignore_for_file: unused_import, prefer_const_constructors, unused_local_variable, prefer_const_declarations,prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 
 import '../widgets/calculate_app_bar.dart';
-import '../widgets/main_navigation_row.dart';
 
 import '../widgets/calculate_button.dart';
 
@@ -76,7 +73,7 @@ class CalculateScreenState extends State<CalculateScreen> {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Scaffold(
-        appBar: CalculateAppBar(
+        appBar: const CalculateAppBar(
           titleText: 'Calculate',
           titleIcon: Icon(Icons.calculate),
         ),
@@ -90,14 +87,14 @@ class CalculateScreenState extends State<CalculateScreen> {
                       buttonText: '<',
                       borderRadius: 30.0,
                     ),
-                    padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
+                    padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
                   ),
                   visible: backspaceButtonStatus,
                 ),
                 Flexible(
                   child: Container(
                     alignment: Alignment.centerRight,
-                    padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
+                    padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
                     child: FittedBox(
                       child: Text(
                         equation,
@@ -112,13 +109,13 @@ class CalculateScreenState extends State<CalculateScreen> {
             ),
             Container(
               alignment: Alignment.centerRight,
-              padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
+              padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
               child: SelectableText(
                 result,
                 style: TextStyle(fontSize: resultFontSize),
               ),
             ),
-            Expanded(
+            const Expanded(
               child: Divider(),
             ),
             Row(

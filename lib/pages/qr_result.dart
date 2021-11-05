@@ -1,25 +1,16 @@
-// ignore_for_file: unused_import, prefer_const_constructors, unused_local_variable, prefer_const_declarations, prefer_typing_uninitialized_variables, no_logic_in_create_state
+// ignore_for_file: no_logic_in_create_state
 
 import 'package:flutter/material.dart';
 import 'package:url_launcher/link.dart';
 
 import '../widgets/qr_result_app_bar.dart';
-import '../widgets/main_navigation_row.dart';
 
 import 'qr_scanner.dart';
 
-import 'dart:convert';
-
-import 'package:http/http.dart' as http;
-
-import 'notes.dart';
-
-import 'package:url_launcher/url_launcher.dart';
-
 class QrResultScreen extends StatefulWidget {
-  final qrCodeResult;
+  final String qrCodeResult;
 
-  const QrResultScreen({Key? key, required String this.qrCodeResult}) : super(key: key);
+  const QrResultScreen({Key? key, required this.qrCodeResult}) : super(key: key);
 
   @override
   QrResultScreenState createState() => QrResultScreenState(
@@ -28,7 +19,7 @@ class QrResultScreen extends StatefulWidget {
 }
 
 class QrResultScreenState extends State<QrResultScreen> {
-  final qrCodeResult;
+  final String qrCodeResult;
 
   QrResultScreenState({
     required this.qrCodeResult,
@@ -38,7 +29,7 @@ class QrResultScreenState extends State<QrResultScreen> {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Scaffold(
-        appBar: QrResultAppBar(
+        appBar: const QrResultAppBar(
           titleText: 'QR Result',
           titleIcon: Icon(Icons.qr_code_2_sharp),
         ),
@@ -52,7 +43,7 @@ class QrResultScreenState extends State<QrResultScreen> {
                       builder: (context, followlink) => GestureDetector(
                         child: Text(
                           qrCodeResult,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
                             decoration: TextDecoration.underline,
@@ -66,7 +57,7 @@ class QrResultScreenState extends State<QrResultScreen> {
                   : SelectableText(
                       qrCodeResult,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                       ),
@@ -83,7 +74,7 @@ class QrResultScreenState extends State<QrResultScreen> {
           Navigator.of(context).pop();
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => QrScannerScreen(),
+              builder: (context) => const QrScannerScreen(),
             ),
           );
         }

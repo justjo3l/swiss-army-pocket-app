@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, use_key_in_widget_constructors, avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 
@@ -10,7 +8,7 @@ class FadeAnimation extends StatelessWidget {
   final Widget child;
   final String direction;
 
-  FadeAnimation({required this.delay, required this.child, required this.direction});
+  const FadeAnimation({Key? key, required this.delay, required this.child, required this.direction}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,24 +16,22 @@ class FadeAnimation extends StatelessWidget {
     tween.add(
       AnimationType.opacity,
       Tween(begin: 0.0, end: 1.0),
-      Duration(milliseconds: 200),
+      const Duration(milliseconds: 200),
     );
     if (direction == 'down') {
       tween.add(
         AnimationType.translateY,
         Tween(begin: -130.0, end: 0.0),
-        Duration(milliseconds: 1000),
+        const Duration(milliseconds: 1000),
         Curves.easeOut,
       );
     } else if (direction == 'up') {
       tween.add(
         AnimationType.translateY,
         Tween(begin: 130.0, end: 0.0),
-        Duration(milliseconds: 1000),
+        const Duration(milliseconds: 1000),
         Curves.easeOut,
       );
-    } else {
-      print('Invalid value');
     }
 
     return PlayAnimation<MultiTweenValues<AnimationType>>(

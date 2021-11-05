@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_typing_uninitialized_variables, annotate_overrides, avoid_print, unused_element
-
 import 'package:flutter/material.dart';
 import '../pages/notes.dart';
 import '../pages/feedback.dart';
@@ -16,12 +14,14 @@ import '../../data/note.dart';
 import '../animations/fade_animation.dart';
 
 class MainNavigationRow extends StatelessWidget {
+  const MainNavigationRow({Key? key}) : super(key: key);
+
   Future _notesFunction(BuildContext context) async {
     await Hive.openBox<Note>('notes');
 
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => NotesScreen(),
+        builder: (context) => const NotesScreen(),
       ),
     );
   }
@@ -29,7 +29,7 @@ class MainNavigationRow extends StatelessWidget {
   void _feedbackFunction(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => FeedbackScreen(),
+        builder: (context) => const FeedbackScreen(),
       ),
     );
   }
@@ -37,7 +37,7 @@ class MainNavigationRow extends StatelessWidget {
   void _calculateFunction(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => CalculateScreen(),
+        builder: (context) => const CalculateScreen(),
       ),
     );
   }
@@ -45,7 +45,7 @@ class MainNavigationRow extends StatelessWidget {
   void _qrFunction(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => QrScannerScreen(),
+        builder: (context) => const QrScannerScreen(),
       ),
     );
   }
@@ -53,7 +53,7 @@ class MainNavigationRow extends StatelessWidget {
   void _musicFunction(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => MusicPlayerScreen(),
+        builder: (context) => const MusicPlayerScreen(),
       ),
     );
   }
@@ -61,11 +61,12 @@ class MainNavigationRow extends StatelessWidget {
   void _compassFunction(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => CompassScreen(),
+        builder: (context) => const CompassScreen(),
       ),
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
@@ -79,7 +80,7 @@ class MainNavigationRow extends StatelessWidget {
                   onPressed: () {
                     _feedbackFunction(context);
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.feedback,
                     size: 60,
                   ),
@@ -92,7 +93,7 @@ class MainNavigationRow extends StatelessWidget {
                       ),
                     ),
                     shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
+                      const RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
                           topRight: Radius.zero,
                           bottomRight: Radius.circular(50),
@@ -112,7 +113,7 @@ class MainNavigationRow extends StatelessWidget {
                   onPressed: () {
                     _musicFunction(context);
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.music_note,
                     size: 60,
                   ),
@@ -125,7 +126,7 @@ class MainNavigationRow extends StatelessWidget {
                       ),
                     ),
                     shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
+                      const RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
                           topRight: Radius.zero,
                           bottomRight: Radius.zero,
@@ -154,7 +155,7 @@ class MainNavigationRow extends StatelessWidget {
                   onPressed: () {
                     _notesFunction(context);
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.notes_rounded,
                     size: 70,
                   ),
@@ -164,7 +165,7 @@ class MainNavigationRow extends StatelessWidget {
                       Size(MediaQuery.of(context).size.width * 0.25, MediaQuery.of(context).size.height * 0.35),
                     ),
                     shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
+                      const RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
                           topRight: Radius.circular(50),
                           bottomRight: Radius.circular(50),
@@ -184,7 +185,7 @@ class MainNavigationRow extends StatelessWidget {
                   onPressed: () {
                     _compassFunction(context);
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.gps_fixed,
                     size: 70,
                   ),
@@ -212,7 +213,7 @@ class MainNavigationRow extends StatelessWidget {
                   onPressed: () {
                     _calculateFunction(context);
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.calculate_rounded,
                     size: 70,
                   ),
@@ -225,7 +226,7 @@ class MainNavigationRow extends StatelessWidget {
                       ),
                     ),
                     shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
+                      const RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
                           topRight: Radius.zero,
                           bottomRight: Radius.zero,
@@ -253,7 +254,7 @@ class MainNavigationRow extends StatelessWidget {
                   onPressed: () {
                     _qrFunction(context);
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.qr_code_2,
                     size: 70,
                   ),
@@ -264,7 +265,7 @@ class MainNavigationRow extends StatelessWidget {
                       MediaQuery.of(context).size.width * 0.20,
                     )),
                     shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
+                      const RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
                           topRight: Radius.circular(50),
                           bottomRight: Radius.zero,

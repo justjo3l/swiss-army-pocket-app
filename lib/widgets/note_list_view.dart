@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-//import './data/custom_scroll_physics.dart';
-
 import 'note_list_tile.dart';
 import '../data/note.dart';
 
@@ -28,7 +26,6 @@ class NotesListViewState extends State<NotesListView> {
         final notesList = box.values.toList().cast<Note>();
         return ListView.builder(
             itemCount: notesList.length,
-            //physics: NotesCustomScrollPhysics(context: context),
             scrollDirection: Axis.horizontal,
             itemBuilder: (BuildContext context, int index) {
               return NoteListTile(

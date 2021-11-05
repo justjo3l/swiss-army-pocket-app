@@ -1,20 +1,16 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_typing_uninitialized_variables, unused_import
-
 import 'package:flutter/material.dart';
-import 'package:swiss_army_pocket_app/main.dart';
 
 import '../animations/fade_animation.dart';
 
-import '../pages/notes.dart';
-
 class FeedbackAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final titleText;
+  final String titleText;
   final Icon titleIcon;
 
-  FeedbackAppBar({
+  const FeedbackAppBar({
+    Key? key,
     required this.titleText,
     required this.titleIcon,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,5 +31,5 @@ class FeedbackAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

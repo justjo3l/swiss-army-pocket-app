@@ -1,15 +1,10 @@
-// ignore_for_file: unused_import, prefer_const_constructors, unused_local_variable, prefer_const_declarations
-
 import 'package:flutter/material.dart';
 
 import '../widgets/feedback_app_bar.dart';
-import '../widgets/main_navigation_row.dart';
 
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-
-import 'notes.dart';
 
 class FeedbackScreen extends StatefulWidget {
   const FeedbackScreen({Key? key}) : super(key: key);
@@ -28,13 +23,13 @@ class FeedbackScreenState extends State<FeedbackScreen> {
     required String name,
     required String message,
   }) async {
-    final serviceId = 'service_vyrxk0v';
-    final templateId = 'template_a65ffal';
-    final userId = 'user_k4M95FE9Yv9A6c9uawHWb';
-    final accessToken = 'b98fa719e97e36d4263ccec1039f4b2c';
+    const serviceId = 'service_vyrxk0v';
+    const templateId = 'template_a65ffal';
+    const userId = 'user_k4M95FE9Yv9A6c9uawHWb';
+    const accessToken = 'b98fa719e97e36d4263ccec1039f4b2c';
 
     final url = Uri.parse('https://api.emailjs.com/api/v1.0/email/send');
-    final response = await http.post(
+    await http.post(
       url,
       headers: {'Content-Type': 'application/json'},
       body: json.encode({
@@ -60,7 +55,7 @@ class FeedbackScreenState extends State<FeedbackScreen> {
     showDialog<String>(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-        title: Text(
+        title: const Text(
           'Thanks for the feedback!',
           textAlign: TextAlign.center,
         ),
@@ -69,7 +64,7 @@ class FeedbackScreenState extends State<FeedbackScreen> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              icon: Icon(Icons.close))
+              icon: const Icon(Icons.close))
         ],
       ),
     );
@@ -79,7 +74,7 @@ class FeedbackScreenState extends State<FeedbackScreen> {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Scaffold(
-          appBar: FeedbackAppBar(
+          appBar: const FeedbackAppBar(
             titleText: 'Feedback & Tips',
             titleIcon: Icon(Icons.feedback_sharp),
           ),
@@ -101,11 +96,11 @@ class FeedbackScreenState extends State<FeedbackScreen> {
                       onSaved: (String? value) {
                         feedbackUserName = value as String;
                       },
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 35,
                       ),
                     ),
-                    margin: EdgeInsets.all(10.0),
+                    margin: const EdgeInsets.all(10.0),
                   ),
                   Container(
                     child: TextFormField(
@@ -121,16 +116,16 @@ class FeedbackScreenState extends State<FeedbackScreen> {
                       onSaved: (String? value) {
                         feedback = value as String;
                       },
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 35,
                       ),
                     ),
-                    margin: EdgeInsets.all(10.0),
+                    margin: const EdgeInsets.all(10.0),
                   ),
                   Container(
                     child: ElevatedButton(
                       onPressed: feedbackButtonClicked,
-                      child: Text(
+                      child: const Text(
                         'Send',
                         style: TextStyle(
                           fontSize: 30,
@@ -141,15 +136,15 @@ class FeedbackScreenState extends State<FeedbackScreen> {
                           //   Size(150, 60),
                           // ),
                           shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
+                            const RoundedRectangleBorder(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(15.0),
                               ),
                             ),
                           ),
-                          padding: MaterialStateProperty.all(EdgeInsets.fromLTRB(30, 10, 30, 10))),
+                          padding: MaterialStateProperty.all(const EdgeInsets.fromLTRB(30, 10, 30, 10))),
                     ),
-                    margin: EdgeInsets.only(top: 30.0),
+                    margin: const EdgeInsets.only(top: 30.0),
                   ),
                 ],
                 mainAxisAlignment: MainAxisAlignment.center,

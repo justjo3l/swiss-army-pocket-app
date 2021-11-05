@@ -1,8 +1,5 @@
-// ignore_for_file: unused_import,prefer_const_constructors, avoid_unnecessary_containers, prefer_const_constructors_in_immutables, use_key_in_widget_constructors, unnecessary_string_interpolations
-
 import 'package:flutter/material.dart';
 
-import '../main.dart';
 import '../pages/note_page.dart';
 
 import '../data/note.dart';
@@ -24,11 +21,12 @@ class NoteGridTile extends StatelessWidget {
     );
   }
 
-  NoteGridTile({
+  const NoteGridTile({
+    Key? key,
     required this.note,
     required this.numOfNotes,
     required this.descriptionColor,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +44,7 @@ class NoteGridTile extends StatelessWidget {
                     color: Theme.of(context).primaryTextTheme.headline5!.color,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 Text(
@@ -64,10 +62,10 @@ class NoteGridTile extends StatelessWidget {
             color: Theme.of(context).cardColor,
           ),
           color: Theme.of(context).cardColor,
-          margin: EdgeInsets.all(
+          margin: const EdgeInsets.all(
             10.0,
           ),
-          padding: EdgeInsets.all(5.0),
+          padding: const EdgeInsets.all(5.0),
           width: MediaQuery.of(context).size.width * 0.80,
         ),
         onTap: () {

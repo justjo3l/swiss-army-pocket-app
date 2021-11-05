@@ -44,8 +44,12 @@ class MainAppState extends State<MainApp> {
     return MaterialApp(
       title: 'Swiss Army Pocket App',
       home: Home(),
-      theme: AppTheme.getLightTheme(),
-      darkTheme: AppTheme.getDarkTheme(),
+      theme: AppTheme.getTheme(
+        isDark: false,
+      ),
+      darkTheme: AppTheme.getTheme(
+        isDark: true,
+      ),
       themeMode: _themeMode,
       debugShowCheckedModeBanner: false,
     );

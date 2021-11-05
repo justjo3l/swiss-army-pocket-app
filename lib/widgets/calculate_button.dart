@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_const_constructors, sized_box_for_whitespace
+// ignore_for_file: must_be_immutable
 
 import 'package:flutter/cupertino.dart';
 
@@ -8,15 +8,16 @@ import '../pages/calculate.dart';
 
 class CalculateButton extends StatelessWidget {
   CalculateButton({
+    Key? key,
     required this.buttonText,
     this.borderRadius,
-  });
+  }) : super(key: key);
 
   String buttonText;
   double? borderRadius;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height * 0.1,
       child: ElevatedButton(
         style: ButtonStyle(
@@ -31,7 +32,7 @@ class CalculateButton extends StatelessWidget {
             ),
           ),
           backgroundColor: MaterialStateProperty.all(Theme.of(context).primaryColor),
-          padding: MaterialStateProperty.all(EdgeInsets.all(15.0)),
+          padding: MaterialStateProperty.all(const EdgeInsets.all(15.0)),
         ),
         onPressed: () {
           CalculateScreen.of(context).buttonPressed(buttonText);

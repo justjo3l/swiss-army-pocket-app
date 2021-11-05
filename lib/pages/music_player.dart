@@ -1,8 +1,9 @@
-// ignore_for_file: use_key_in_widget_constructors, annotate_overrides, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
 class MusicPlayerScreen extends StatefulWidget {
+  const MusicPlayerScreen({Key? key}) : super(key: key);
+
+  @override
   MusicPlayerScreenState createState() => MusicPlayerScreenState();
 }
 
@@ -14,13 +15,13 @@ class MusicPlayerScreenState extends State<MusicPlayerScreen> {
         body: Align(
           child: Column(
             children: [
-              Text(
+              const Text(
                 'This doesn\'t work just yet!',
                 style: TextStyle(
                   fontSize: 30,
                 ),
               ),
-              Text(
+              const Text(
                 'Give us a bit!',
                 style: TextStyle(
                   fontSize: 30,
@@ -30,7 +31,7 @@ class MusicPlayerScreenState extends State<MusicPlayerScreen> {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                icon: Icon(Icons.arrow_back),
+                icon: const Icon(Icons.arrow_back),
                 color: Theme.of(context).primaryColor,
                 iconSize: 30,
               ),

@@ -1,17 +1,11 @@
-// ignore_for_file: unused_import, prefer_final_fields, unused_field, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import '../widgets/note_list_view.dart';
 import '../widgets/note_grid_view.dart';
 
 import '../widgets/notes_app_bar.dart';
-import '../animations/fade_animation.dart';
-
-import '../main.dart';
 
 import '../data/note.dart';
 
-import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -60,7 +54,7 @@ class _NotesScreenState extends State<NotesScreen> {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Scaffold(
-        appBar: NotesAppBar(
+        appBar: const NotesAppBar(
           titleText: 'Notes',
           titleIcon: Icon(Icons.notes_rounded),
         ),
@@ -73,15 +67,15 @@ class _NotesScreenState extends State<NotesScreen> {
                     final notesList = box.values.toList().cast<Note>();
                     return notesListViewStatus
                         ? ConstrainedBox(
-                            child: (notesList.isNotEmpty || notesListFlag) ? NotesListView() : Text('No Notes yet :('),
+                            child: (notesList.isNotEmpty || notesListFlag) ? const NotesListView() : const Text('No Notes yet :('),
                             constraints: BoxConstraints(
                               maxHeight: MediaQuery.of(context).size.height * 0.45,
                             ),
                           )
                         : (notesList.isNotEmpty || notesListFlag)
-                            ? NotesGridView()
+                            ? const NotesGridView()
                             : ConstrainedBox(
-                                child: Text('No Notes yet :('),
+                                child: const Text('No Notes yet :('),
                                 constraints: BoxConstraints(
                                   maxHeight: MediaQuery.of(context).size.height * 0.45,
                                 ),
@@ -92,16 +86,16 @@ class _NotesScreenState extends State<NotesScreen> {
               child: Container(
                 child: RawMaterialButton(
                   onPressed: addNote,
-                  child: Icon(
+                  child: const Icon(
                     Icons.add,
                     color: Colors.white,
                     size: 40.0,
                   ),
                   fillColor: Theme.of(context).primaryColor,
-                  shape: CircleBorder(),
-                  padding: EdgeInsets.all(10.0),
+                  shape: const CircleBorder(),
+                  padding: const EdgeInsets.all(10.0),
                 ),
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   bottom: 20,
                   left: 20,
                 ),

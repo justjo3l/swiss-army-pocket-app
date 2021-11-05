@@ -1,4 +1,4 @@
-// ignore_for_file: type_init_formals, no_logic_in_create_state, prefer_const_constructors, unnecessary_cast
+// ignore_for_file: no_logic_in_create_state
 
 import 'package:flutter/material.dart';
 
@@ -11,9 +11,9 @@ class NotePageScreen extends StatefulWidget {
 
   const NotePageScreen({
     Key? key,
-    required Note this.note,
-    required int this.numOfNotes,
-    required Color this.descriptionColor,
+    required this.note,
+    required this.numOfNotes,
+    required this.descriptionColor,
   }) : super(key: key);
 
   @override
@@ -115,12 +115,12 @@ class _NotePageScreenState extends State<NotePageScreen> {
               cursorHeight: 1,
               cursorWidth: 1,
               decoration: InputDecoration(
-                border: OutlineInputBorder(
+                border: const OutlineInputBorder(
                   borderSide: BorderSide.none,
                 ),
                 filled: titleFillStatus,
                 fillColor: Colors.white,
-                constraints: BoxConstraints(
+                constraints: const BoxConstraints(
                   maxHeight: 30,
                   maxWidth: 400,
                 ),
@@ -134,7 +134,7 @@ class _NotePageScreenState extends State<NotePageScreen> {
             centerTitle: true,
             actions: [
               IconButton(
-                icon: Icon(Icons.delete),
+                icon: const Icon(Icons.delete),
                 onPressed: () {
                   showDialog<String>(
                     builder: (BuildContext context) => AlertDialog(
@@ -143,7 +143,7 @@ class _NotePageScreenState extends State<NotePageScreen> {
                         textAlign: TextAlign.center,
                       ),
                       content: ElevatedButton(
-                        child: Text('Delete'),
+                        child: const Text('Delete'),
                         onPressed: () {
                           deleteNote(note);
                           Navigator.of(context).pop();
@@ -157,7 +157,7 @@ class _NotePageScreenState extends State<NotePageScreen> {
               ),
               Visibility(
                 child: IconButton(
-                  icon: Icon(Icons.save),
+                  icon: const Icon(Icons.save),
                   onPressed: () {
                     newNoteTitle = noteTitleController.text;
                     newNoteDescription = noteDescriptionController.text;
@@ -187,7 +187,7 @@ class _NotePageScreenState extends State<NotePageScreen> {
               cursorHeight: 1,
               cursorWidth: 1,
               decoration: InputDecoration(
-                border: OutlineInputBorder(
+                border: const OutlineInputBorder(
                   borderSide: BorderSide.none,
                 ),
                 filled: descriptionFillStatus,
@@ -199,8 +199,8 @@ class _NotePageScreenState extends State<NotePageScreen> {
                 color: descriptionColor,
               ),
             ),
-            margin: EdgeInsets.all(10.0),
-            padding: EdgeInsets.only(
+            margin: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.only(
               top: 10.0,
               left: 10.0,
             ),

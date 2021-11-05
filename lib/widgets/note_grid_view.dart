@@ -1,8 +1,4 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
-
-//import './data/custom_scroll_physics.dart';
 
 import 'note_grid_tile.dart';
 import '../data/note.dart';
@@ -31,7 +27,7 @@ class NotesGridViewState extends State<NotesGridView> {
         return GridView.builder(
             itemCount: notesList.length,
             //physics: NotesCustomScrollPhysics(context: context),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
             itemBuilder: (BuildContext context, int index) {
               return NoteGridTile(
                 note: notesList[index],

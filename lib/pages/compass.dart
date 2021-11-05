@@ -1,8 +1,9 @@
-// ignore_for_file: use_key_in_widget_constructors, annotate_overrides, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
 class CompassScreen extends StatefulWidget {
+  const CompassScreen({Key? key}) : super(key: key);
+
+  @override
   CompassScreenState createState() => CompassScreenState();
 }
 
@@ -14,13 +15,13 @@ class CompassScreenState extends State<CompassScreen> {
         body: Align(
           child: Column(
             children: [
-              Text(
+              const Text(
                 'This doesn\'t work just yet!',
                 style: TextStyle(
                   fontSize: 30,
                 ),
               ),
-              Text(
+              const Text(
                 'Give us a bit!',
                 style: TextStyle(
                   fontSize: 30,
@@ -30,7 +31,7 @@ class CompassScreenState extends State<CompassScreen> {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                icon: Icon(Icons.arrow_back),
+                icon: const Icon(Icons.arrow_back),
                 color: Theme.of(context).primaryColor,
                 iconSize: 30,
               ),

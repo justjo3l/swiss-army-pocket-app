@@ -1,5 +1,3 @@
-// ignore_for_file: use_key_in_widget_constructors, annotate_overrides, prefer_const_constructors, unnecessary_null_comparison
-
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -10,6 +8,9 @@ import 'package:swiss_army_pocket_app/pages/qr_result.dart';
 import 'qr_result.dart';
 
 class QrScannerScreen extends StatefulWidget {
+  const QrScannerScreen({Key? key}) : super(key: key);
+
+  @override
   QrScannerScreenState createState() => QrScannerScreenState();
 
   static QrScannerScreenState of(BuildContext context) => context.findAncestorStateOfType<QrScannerScreenState>() as QrScannerScreenState;
@@ -70,14 +71,12 @@ class QrScannerScreenState extends State<QrScannerScreen> {
 
     controller.scannedDataStream.listen(
       (barcode) {
-        if (barcode != null) {
-          controller.stopCamera();
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => QrResultScreen(qrCodeResult: barcode.code),
-            ),
-          );
-        }
+        controller.stopCamera();
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => QrResultScreen(qrCodeResult: barcode.code),
+          ),
+        );
       },
     );
   }
